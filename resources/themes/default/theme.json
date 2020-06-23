@@ -1,0 +1,6 @@
+{
+    "name": "default",
+    "extends": "",
+    "asset-path": "default",
+    "thumbnail": "https://bootswatch.com/united/thumbnail.png"
+}

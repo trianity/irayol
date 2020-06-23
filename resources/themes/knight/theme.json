@@ -1,0 +1,9 @@
+{
+    "name": "knight",
+    "author": "webresourcesdepot",
+    "url_theme": "https://webresourcesdepot.com/freebie/knight/",
+    "version": "1.0",
+    "extends": "",
+    "asset-path": "knight",
+    "thumbnail": "https://webresourcesdepot.com/wp-content/uploads/2019/05/knight-800x401.png"
+}

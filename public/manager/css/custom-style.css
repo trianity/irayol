@@ -1,0 +1,47 @@
+.footer-admin {
+    text-align: center;
+    padding: 20px 0 20px;
+}
+.wrap-page {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.loading {
+    /* optional way, set loading as background */
+    background-image: url("https://loading.io/spinners/coolors/lg.palette-rotating-ring-loader.gif");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.gallery {
+    display: inline-block;
+    margin-top: 20px;
+}
+.upload-box {
+    padding: 40px;
+    margin: 20px 0;
+    display: block;
+    border: 1px solid #d7d7d7;
+}
+#MediaModal img:hover {
+    /*border: #000 2px solid;*/
+    cursor: pointer;
+}
+.selected {
+    border: #e95420 5px solid;
+}
+
+.img-card-background {
+    padding: 0px;
+    height: 180px;
+    background-size: cover;
+    background-position: center center;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.scroll {
+    max-height: 200px;
+    overflow-y: auto;
+}

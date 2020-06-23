@@ -1,0 +1,50 @@
+@extends('layouts.app')
+@push('title', 'Edit Category') 
+@section('content')
+
+    <div class="card mt-4">
+  
+        <div class="card-header clearfix">
+
+            <div class="float-left">
+                {{ !empty($category->name) ? $category->name : 'Category' }}
+            </div>
+            <div class="btn-group btn-group-sm float-right" role="group">
+
+                <a href="{{ route('category.index') }}" class="btn btn-primary" title="Show All Category">
+                    <i class="fa fa-undo" aria-hidden="true"></i>
+                </a>
+
+                <a href="{{ route('category.create') }}" class="btn btn-success" title="Create New Category">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                </a>
+
+            </div>
+        </div>
+
+        <div class="card-body">
+
+            @if ($errors->any())
+                <ul class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
+
+            <form method="POST" action="{{ route('category.update', $category->id) }}" id="edit_category_form" name="edit_category_form" accept-charset="UTF-8" class="form-horizontal">
+            {{ csrf_field() }}
+            <input name="_method" type="hidden" value="PUT">
+            @include ('categories.form', [
+                                        'category' => $category,
+                                      ])
+
+                <div class="form-group">
+                        <input class="btn btn-primary" type="submit" value="Update">
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+@endsection
