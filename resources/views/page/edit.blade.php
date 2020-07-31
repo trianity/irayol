@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @push('title', 'Edit Page')
 @section('content')
-<div class="container mt-4">
+<div class="container">
     <form action="{{route('page.update', $page->id) }}" method="POST">
         @method('PUT')
         @csrf
@@ -13,7 +13,7 @@
 						<div class="form-group">
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
-									<span class="input-group-text">Title</span>
+									<span class="input-group-text">{{__('global.title')}}</span>
 								</div>
 								<input type="text" class="form-control" id="title" value="{{ $page->title }}" name="title" placeholder="Title" />
 								@if ($errors->has('title'))
@@ -31,7 +31,7 @@
 						<div class="form-group">
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
-									<span class="input-group-text">URL</span>
+									<span class="input-group-text">{{__('global.url')}}</span>
 								</div>
                         		<input type="text" class="form-control" id="slug" name="slug" value="{{ $page->slug }}" placeholder="URL" />
 								@if ($errors->has('slug'))
@@ -51,11 +51,11 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
-                        Page Atributes
+                        {{__('global.options')}}
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="exampleSelect2">Users</label>
+                            <label for="exampleSelect2">{{__('global.users.title')}}</label>
                             <select class="form-control" id="user_id" name="user_id">
                                 @foreach ($users as $key => $user)
                                     <option value="{{$key}}" {{$key == $page->user_id ? 'selected' : ''}}>{{$user}}</option>
@@ -71,15 +71,15 @@
 					<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
 						<div class="card-body">
 							<div class="form-group">
-								<label for="title">SEO Title</label>
+								<label for="title">{{__('global.seo_title')}}</label>
 								<input type="text" class="form-control" id="titleseo" name="titleseo" value="{{ $page->titleseo }}" />
 							</div>
 							<div class="form-group">
-								<label for="content">SEO Description</label>
+								<label for="content">{{__('global.seo_description')}}</label>
 								<textarea class="form-control" rows="3" name="descriptionseo">{{ $page->descseo }}</textarea>
 							</div>
 							<div class="form-group">
-								<label for="content">SEO Keyword</label>
+								<label for="content">{{__('global.seo_keyword')}}</label>
 								<textarea class="form-control" rows="3" name="keywordseo">{{ $page->keywordseo }}</textarea>
 							</div>
 						</div>
@@ -92,10 +92,10 @@
 				<input type="hidden" name="_method" value="put"/>
 				<div class="row">
 					<div class="col-6 mt-3">
-						<input type="submit" name="submit" value="Save" class="btn btn-primary btn-block" />
+						<input type="submit" name="submit" value="{{__('global.save')}}" class="btn btn-primary btn-block" />
 					</div>
 					<div class="col-6 mt-3">
-						<a class="btn btn-secondary btn-block" href="{{route('page.index')}}">Cancel</a>
+						<a class="btn btn-secondary btn-block" href="{{route('page.index')}}">{{__('global.cancel')}}</a>
 					</div>
 				</div>
             </div>

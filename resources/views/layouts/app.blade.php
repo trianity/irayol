@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen" />
         <link href="{{ asset('manager/css/select2.css') }}" rel="stylesheet" />
-        
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet" />
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700" rel="stylesheet">
         @stack('css')
@@ -38,7 +38,7 @@
         <!-- Main Footer -->
 		<footer class="main-footer">
 			<strong>Copyright &copy; <?php echo date("Y"); ?> <a href="http://irayol.com">IRAYOL</a>.</strong>
-			All rights reserved.
+			{{__('All rights reserved.')}}
 			<div class="float-right d-none d-sm-inline-block"><b>Version</b> 1.0.0</div>
 		</footer>
 

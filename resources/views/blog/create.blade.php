@@ -18,7 +18,7 @@
 						<div class="form-group">
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
-									<span class="input-group-text">Title</span>
+									<span class="input-group-text">{{__('global.title')}}</span>
 								</div>
                         		<input type="text" class="form-control" id="title" name="title" placeholder="Title" />
 							</div>
@@ -32,11 +32,11 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
-                        Blog Atributes
+                        {{__('global.options')}}
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="exampleSelect2">Visibility</label>
+                            <label for="exampleSelect2">{{__('global.visibility')}}</label>
                             <select class="custom-select" id="visibility" name="visibility">
                                 <option selected="" disabled>Open this select visibility</option>
                                 @foreach ($data = array('published' => 'Published', 'draft' => 'Draft', 'pending_review' => 'Pending Review'); as $key => $visibility)                                    
@@ -45,7 +45,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="exampleSelect2">Category</label>
+                            <label for="exampleSelect2">{{__('global.categories')}}</label>
                             <select multiple="" class="form-control select2" id="category" name="category[]" multiple>
                                 @foreach ($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
@@ -53,7 +53,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="title">Date Published</label>
+                            <label for="title">{{__('global.created_at')}}</label>
                             <div class="form-group">
                                 <div class="input-group mb-3">                        
                                 <input type="text" class="form-control datetimepicker-input" id="published_at" name="published_at" value="{{  date('Y-m-d h:m') }}" data-toggle="datetimepicker" data-target="#published_at"/>
@@ -65,7 +65,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <label class="control-label">Main Image</label>
+                            <label class="control-label">{{__('global.main_image')}}</label>
                             <div class="form-group">
                                 <div class="input-group mb-3">
                                 <input type="text" class="form-control" id="main_image" name="main_image" readonly>
@@ -87,17 +87,17 @@
 					<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
 						<div class="card-body">
 							<div class="form-group">
-								<label for="title">SEO Title</label>
+								<label for="title">{{__('global.seo_title')}}</label>
 								<input type="text" class="form-control" id="titleseo" name="titleseo" placeholder="Title SEO" />
 							</div>
 
 							<div class="form-group">
-								<label for="content">SEO Description</label>
+								<label for="content">{{__('global.seo_description')}}</label>
 								<textarea class="form-control" rows="3" name="descriptionseo"></textarea>
 							</div>
 
 							<div class="form-group">
-								<label for="content">SEO Keyword</label>
+								<label for="content">{{__('global.seo_keyword')}}</label>
 								<textarea class="form-control" rows="3" name="keywordseo"></textarea>
 							</div>
 						</div>

@@ -15,13 +15,13 @@
     <div class="card-header">
         <div class="row">
             <div class="col-md-6">
-                List Your Blogs
+                {{__('global.list_blogs')}}
             </div>
             <div class="col-md-6">
                 <div class="btn-group btn-group-sm float-right" role="group">
-                    <a href="#item" class="btn btn-primary btn-sm" data-toggle="collapse"><i class="fa fa-filter" aria-hidden="true"></i> Number of items</a>
-                    <a href="#search" class="btn btn-primary btn-sm" data-toggle="collapse"><i class="fa fa-search" aria-hidden="true"></i> Search Page</a>
-                    <a class="btn btn-success btn-sm" href="{{ route('blog.create') }}"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Blog</a>
+                    <a href="#item" class="btn btn-primary btn-sm" data-toggle="collapse"><i class="fa fa-filter" aria-hidden="true"></i> {{__('global.number_of_items')}}</a>
+                    <a href="#search" class="btn btn-primary btn-sm" data-toggle="collapse"><i class="fa fa-search" aria-hidden="true"></i> {{__('global.search')}}</a>
+                    <a class="btn btn-success btn-sm" href="{{ route('blog.create') }}"><i class="fa fa-plus-circle" aria-hidden="true"></i> {{__('global.create')}}</a>
                 </div>
             </div>
         </div>
@@ -32,11 +32,11 @@
         <div id="item" class="collapse">
             <form method="get" action="{{route('blog.index')}}">
                 <div class="form-group">
-                    <label for="edit_page_per_page">Number of items per page:</label>
+                    <label for="edit_page_per_page">{{__('global.number_of_items')}}</label>
                     <div class="input-group mb-3">
                         <input min="1" max="999" class="form-control" name="number" id="number" maxlength="3" placeholder="10" type="number" />
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit" >Apply</button>
+                            <button class="btn btn-primary" type="submit">{{__('global.apply')}}</button>
                         </div>
                     </div>
                 </div>
@@ -48,9 +48,9 @@
             <form method="get" action="{{route('blog.index')}}">
                 <div class="form-group">
                     <div class="input-group mb-3">
-                        <input class="form-control" name="search" id="search" placeholder="Search Blog" type="text" value="{{ !empty(Request::get('search')) ?  Request::get('search') : '' }}" />
+                        <input class="form-control" name="search" id="search" placeholder="{{__('global.search')}}" type="text" value="{{ !empty(Request::get('search')) ?  Request::get('search') : '' }}" />
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit">Search</button>
+                            <button class="btn btn-primary" type="submit">{{__('global.apply')}}</button>
                         </div>
                     </div>
                 </div>
@@ -63,11 +63,11 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Category</th>
-                        <th>Updated Date</th>
-                        <th colspan="3">Action</th>
+                        <th>{{__('global.title')}}</th>
+                        <th>{{__('global.author')}}</th>
+                        <th>{{__('global.update_at')}}</th>
+                        <th>{{__('global.categories')}}</th>
+                        <th colspan="3">{{__('global.action')}}</th>
                     </tr>
                 </thead>
                 <tbody>

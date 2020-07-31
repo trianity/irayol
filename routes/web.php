@@ -24,8 +24,11 @@ Route::group(['prefix' => 'admin'], function() {
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
 
+    // Change languaje
+    Route::get('lang/{lang}', 'HomeController@swap')->name('lang.swap');
+
     // Dashboard
-    Route::get('/home', 'HomeController@index')->name('home'); //main dashboard
+    Route::get('/home', 'HomeController@index')->name('admin.home'); //main dashboard
 
     // Blog
     Route::resource('/blog', 'BlogsController', ['except' => ['show']]);

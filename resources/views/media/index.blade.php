@@ -15,13 +15,13 @@
     <div class="card-header">
         <div class="row">
             <div class="col-md-6">
-                All Media
+                {{__('global.media')}}
             </div>
             <div class="col-md-6">
                 <div class="btn-group btn-group-sm float-right" role="group">
-                    <a href="#item" class="btn btn-primary btn-sm" data-toggle="collapse"><i class="fa fa-filter" aria-hidden="true"></i> Number of items</a>
-                    <a href="#search" class="btn btn-primary btn-sm" data-toggle="collapse"><i class="fa fa-search" aria-hidden="true"></i> Search Image</a> 
-                    <a href="#upload" class="btn btn-success btn-sm" data-toggle="collapse"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Media</a>
+                    <a href="#item" class="btn btn-primary btn-sm" data-toggle="collapse"><i class="fa fa-filter" aria-hidden="true"></i> {{__('global.number_of_items')}}</a>
+                    <a href="#search" class="btn btn-primary btn-sm" data-toggle="collapse"><i class="fa fa-search" aria-hidden="true"></i> {{__('global.search')}}</a> 
+                    <a href="#upload" class="btn btn-success btn-sm" data-toggle="collapse"><i class="fa fa-plus-circle" aria-hidden="true"></i> {{__('global.create')}}</a>
                 </div>
             </div>
         </div>
@@ -40,11 +40,11 @@
         <div id="item" class="collapse">
             <form method="get" action="{{route('media.index')}}">
                 <div class="form-group">
-                    <label for="edit_page_per_page">Number of items per page:</label>
+                    <label for="edit_page_per_page">{{__('global.number_of_items')}}</label>
                     <div class="input-group mb-3">            
                         <input min="1" max="999" class="form-control" name="number" id="number" maxlength="3" placeholder="10" type="number" />
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit">Apply</button>
+                            <button class="btn btn-primary" type="submit">{{__('global.apply')}}</button>
                         </div>
                     </div>
                 </div>
@@ -56,9 +56,9 @@
             <form method="get" action="{{route('media.index')}}">
                 <div class="form-group">
                     <div class="input-group mb-3">            
-                        <input class="form-control" name="search" id="search" placeholder="Search Image" type="text" value="{{ !empty(Request::get('search')) ?  Request::get('search') : '' }}">
+                        <input class="form-control" name="search" id="search" placeholder="{{__('global.search')}}" type="text" value="{{ !empty(Request::get('search')) ?  Request::get('search') : '' }}">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit" type="button">Search</button>
+                            <button class="btn btn-primary" type="submit" type="button">{{__('global.apply')}}</button>
                         </div>
                     </div>
                 </div>
@@ -66,12 +66,12 @@
         </div>
 
         @if(count($media) >= 1)
-        <a href="#" class="btn btn-primary filter-button btn-sm" data-filter="all">All</a>
-        <a href="#" class="btn btn-primary filter-button btn-sm" data-filter="image">Image</a>
-        <a href="#" class="btn btn-primary filter-button btn-sm" data-filter="document">Document</a>
-        <a href="#" class="btn btn-primary filter-button btn-sm" data-filter="music">Music</a>
-        <a href="#" class="btn btn-primary filter-button btn-sm" data-filter="video">Video</a>
-        <a href="#" class="btn btn-primary filter-button btn-sm" data-filter="others">Others</a> 
+        <a href="#" class="btn btn-primary filter-button btn-sm" data-filter="all">{{__('global.all')}}</a>
+        <a href="#" class="btn btn-primary filter-button btn-sm" data-filter="image">{{__('global.images')}}</a>
+        <a href="#" class="btn btn-primary filter-button btn-sm" data-filter="document">{{__('global.documents')}}</a>
+        <a href="#" class="btn btn-primary filter-button btn-sm" data-filter="music">{{__('global.songs')}}</a>
+        <a href="#" class="btn btn-primary filter-button btn-sm" data-filter="video">{{__('global.videos')}}</a>
+        <a href="#" class="btn btn-primary filter-button btn-sm" data-filter="others">{{__('global.others')}}</a> 
         @endif
 
         @if(count($media) >= 1)
@@ -135,10 +135,10 @@
                                                 </div>                                        
                                             </div>  
 
-                                            <p><b>File Name :</b> {{ $medias->file }}</p>
-                                            <p><b>File type :</b> Image/{{ $medias->extension }}</p>
-                                            <p><b>Size :</b> {{ filesize("storage/uploads/".$medias->image_name) / 1024 }} KB</p>
-                                            <p><b>Uploaded on :</b> {{ $medias->created_at }}</p> 
+                                            <p><b>{{__('global.title')}} :</b> {{ $medias->file }}</p>
+                                            <p><b>{{__('global.type')}} :</b> Image/{{ $medias->extension }}</p>
+                                            <p><b>{{__('global.size')}} :</b> {{ filesize("storage/uploads/".$medias->image_name) / 1024 }} KB</p>
+                                            <p><b>{{__('global.created_at')}} :</b> {{ $medias->created_at }}</p> 
                                             
                                                                                                 
                                         </div>
@@ -151,11 +151,9 @@
             </div>
         </div>
         @elseif(count($media) == 0 )
-            <div class="alert alert-warning" role="alert">
-                <h4 class="alert-heading text-center m-0">No files found!</h4>
-            </div>
+            <div class="alert alert-warning" role="alert">{{__('global.no_results')}}</a></div>
         @else
-            <div class="alert alert-warning" role="alert">Empty media file. Please, click Add Media to add media file.</div>
+            <div class="alert alert-warning" role="alert">{{__('global.empty_results')}}</div>
         @endif
     </div>
     <div class="card-footer">

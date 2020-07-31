@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @push('title', 'Create Category') 
 @section('content')
-    <div class="card mt-4">
+    <div class="card">
         <div class="card-header clearfix">        
             <span class="float-left">
-                Create New Category
+                {{__('global.create_new') . ' ' . strtolower(__('global.category'))}}
             </span>
             <div class="btn-group btn-group-sm float-right" role="group">
-                <a href="{{ route('category.index') }}" class="btn btn-primary" title="Show All Category">
-                    <i class="fa fa-undo" aria-hidden="true"></i>
+                <a href="{{ route('category.index') }}" class="btn btn-primary" title="{{__('global.return_back')}}">
+                    <i class="fa fa-undo" aria-hidden="true"></i> {{__('global.return_back')}}
                 </a>
             </div>
         </div>
@@ -24,7 +24,7 @@
                 {{ csrf_field() }}
                 @include ('categories.form', ['category' => null,])
                 <div class="form-group">
-                    <input class="btn btn-primary" type="submit" value="Add">
+                    <input class="btn btn-primary" type="submit" value="{{__('global.save')}}">
                 </div>
             </form>
         </div>

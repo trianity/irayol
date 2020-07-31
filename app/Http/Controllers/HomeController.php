@@ -39,4 +39,11 @@ class HomeController extends Controller
         return view('home', compact('users', 'pages', 'blogs', 'medias', 'categories'));
     }
 
+    public function swap($lang)
+    {
+        // Almacenar el lenguaje en la session
+        session()->put('locale', $lang);
+        return redirect()->back();
+    }
+
 }

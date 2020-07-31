@@ -14,10 +14,10 @@
     <div class="card">
         <div class="card-header container-fluid">
             <div class="float-left">
-                Themes
+                {{__('global.themes')}}
             </div>
             <div class="btn-group btn-group-sm float-right" role="group">
-                <a href="#create" class="btn btn-success btn-sm" data-toggle="collapse"><i class="fas fa-paint-brush" aria-hidden="true"></i> New Theme</a>
+                <a href="#create" class="btn btn-success btn-sm" data-toggle="collapse"><i class="fas fa-paint-brush" aria-hidden="true"></i> {{__('global.create')}}</a>
             </div>
         </div>
         <div class="card-body">
@@ -27,16 +27,17 @@
                     <div class="form-group">
                         <div class="input-group mb-3">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="theme" name="theme" accept='application/zip'>
-                            <label class="custom-file-label" for="theme">Choose file</label>
+                            <input type="file" class="custom-file-input" id="theme" name="theme" accept='application/zip' required>
+                            <label class="custom-file-label" for="theme">{{__('global.search')}}</label>
                         </div>
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit">Apload</button>
+                            <button class="btn btn-primary" type="submit">{{__('global.upload')}}</button>
                         </div>
                         </div>
                     </div>
                 </form>
             </div>
+            @if (count($themes) > 0)
             <div class="row" id="themes">
                 @foreach($themes as $theme)
                     <div class="col-md-3 mb-3">
@@ -51,7 +52,7 @@
                                         <form action="{{route('theme.active')}}" method="POST">
                                             @csrf
                                             <input type="text" hidden name="theme_name" id="theme_name" value="{{ $theme->name }}">
-                                            <button type="submit" class="btn btn-{{ $theme->name == Theme::get() ? 'success' : 'secondary' }}">{{ $theme->name == Theme::get() ? 'Active' : 'Inactive' }}</button>
+                                            <button type="submit" class="btn btn-{{ $theme->name == Theme::get() ? 'success' : 'secondary' }}">{{ $theme->name == Theme::get() ? __('global.active') : __('global.inactive') }}</button>
                                         </form>
                                     </div>
                                     <div class="col-6">
@@ -63,8 +64,8 @@
                                                 <div class="btn-group " role="group">
                                                     <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
-                                                        <button type="submit" class="dropdown-item" title="Delete Theme" onclick="return confirm(&quot;Click Ok to delete Theme.&quot;)">
-                                                            <i class="fas fa-trash"></i> Delete Theme
+                                                        <button type="submit" class="dropdown-item" title="{{__('global.delete')}}" onclick="return confirm(&quot;{{ __('global.confirm_delete') }}&quot;)">
+                                                            <i class="fas fa-trash"></i> {{__('global.delete')}}
                                                         </button>
                                                     </div>
                                                 </div>
@@ -77,6 +78,11 @@
                     </div>
                 @endforeach
             </div>
+            @elseif(count($themes) == 0)
+                <div class="alert alert-warning" role="alert">{{__('global.no_results')}}</a></div>
+            @else
+                <div class="alert alert-warning" role="alert">{{__('global.empty_results')}}</div>
+            @endif 
         </div>
     </div>
 @stop

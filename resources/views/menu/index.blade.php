@@ -2,7 +2,7 @@
 @push('title', 'Menu')
 @section('content')
     @if(Session::has('success_message'))
-        <div class="alert alert-success mt-3">
+        <div class="alert alert-success">
             <i class="fa fa-check-circle" aria-hidden="true"></i>
             {!! session('success_message') !!}
             <button type="button" class="close" data-dismiss="alert" aria-label="close">
@@ -10,19 +10,19 @@
             </button>
         </div>
     @endif
-    <div class="card mt-3">
+    <div class="card">
         <div class="card-header container-fluid">
             <div class="row">
                 <div class="col">
                     <div class="float-left">
-                        Menus
+                        {{__('global.menus')}}
                     </div>
                 </div>
                 <div class="col ">
                     <div class="btn-group btn-group-sm float-right" role="group">
-                        <a href="#item" class="btn btn-primary btn-sm" data-toggle="collapse"><i class="fas fa-filter" aria-hidden="true"></i> Number of items</a>
-                        <a href="#search" class="btn btn-primary btn-sm" data-toggle="collapse"><i class="fas fa-search" aria-hidden="true"></i> Search Menu</a>
-                        <a href="#newMenu" class="btn btn-success" data-toggle="collapse"><i class="fas fa-plus" aria-hidden="true"></i> New Menu</a>
+                        {{-- <a href="#item" class="btn btn-primary btn-sm" data-toggle="collapse"><i class="fas fa-filter" aria-hidden="true"></i> {{__('global.number_of_items')}}</a> --}}
+                        {{-- <a href="#search" class="btn btn-primary btn-sm" data-toggle="collapse"><i class="fas fa-search" aria-hidden="true"></i> {{__('global.search')}}</a> --}}
+                        <a href="#newMenu" class="btn btn-success" data-toggle="collapse"><i class="fas fa-plus" aria-hidden="true"></i> {{__('global.create')}}</a>
                     </div>
                 </div>
             </div>                        
@@ -32,11 +32,11 @@
                 <form method="post" action="{{route('menu.create')}}">
                     @csrf
                     <div class="form-group">
-                        <label for="edit_page_per_page">Menu Title:</label>
+                        <label for="edit_page_per_page">{{__('global.title')}}</label>
                         <div class="input-group mb-3">            
-                            <input class="form-control" name="menu_name" id="menu_name" value="{{old('menu_name')}}" type="text" placeholder="Menu Title" />
+                            <input class="form-control" name="menu_name" id="menu_name" value="{{old('menu_name')}}" type="text" required />
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">Create</button>
+                                <button class="btn btn-primary" type="submit">{{__('global.apply')}}</button>
                             </div>
                         </div>
                     </div>
@@ -48,22 +48,22 @@
                     <table class="table table-striped ">
                         <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>Create At</th>
-                                <th>Status</th>
-                                <th></th>
+                                <th>{{__('global.title')}}</th>
+                                <th>{{__('global.created_at')}}</th>
+                                <th>{{__('global.status')}}</th>
+                                <th class="text-center" colspan="3">{{__('global.action')}}</th>
                             </tr>
                         </thead>
                         <tbody>
                         @foreach($menus as $menu)
                             <tr>
                                 <td>{{ $menu->name }}</td>
-                                <td>{{ $menu->created_at }}</td>
+                                <td>{{\Carbon\Carbon::parse($menu->updated_at)->diffForHumans() }}</td>
                                 <td>
                                     <form action="{{route('menu.active')}}" method="POST">
                                         @csrf
                                         <input type="text" hidden name="main_menu" id="main_menu" value="{{ $menu->id }}">
-                                        <button type="submit" class="btn btn-{{ $menu->id == setting('main_menu') ? 'success' : 'secondary' }} btn-sm">{{ $menu->id == setting('main_menu') ? 'Active' : 'Inactive' }}</button>
+                                        <button type="submit" class="btn btn-{{ $menu->id == setting('main_menu') ? 'success' : 'secondary' }} btn-sm">{{ $menu->id == setting('main_menu') ? __('global.active') : __('global.inactive') }}</button>
                                     </form>
                                 </td>
                                 <td>
@@ -91,10 +91,10 @@
                     </table>
                 </div>
             @elseif(count($menus) == 0)
-                <div class="alert alert-warning" role="alert">Sorry, we can't find your user. <a href="{{ route('menu.index') }}">Reset search.</a></div>
+                <div class="alert alert-warning" role="alert">{{__('global.no_results')}}</a></div>
             @else
-                <div class="alert alert-warning" role="alert">Empty user! Please click Add User to add user.</div>
-            @endif
+                <div class="alert alert-warning" role="alert">{{__('global.empty_results')}}</div>
+            @endif  
         </div>
     </div>
 @endsection
