@@ -14,7 +14,7 @@ Pasos para instalar el proyecto en local
 git clone https://github.com/jesusave/irayol.git
 ```
 ```
-cd maps
+cd irayol
 ```
 ```
 composer install
