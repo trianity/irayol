@@ -26,7 +26,7 @@ class MenuItem extends Model
 
     public static function tree()
     {
-        return static::with(implode('.', array_fill(0, 100, 'children')))->where('parent', '=', '0')->orderBy('order')->get();
+        return static::with(implode('.', array_fill(0, 100, 'children')))->where('parent', '=', null)->orderBy('order')->get();
     }
 
     public function category()

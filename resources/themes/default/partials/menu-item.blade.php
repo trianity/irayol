@@ -8,9 +8,7 @@
         @if( $menu->children )            
             <div class="dropdown-menu sub-menu" aria-labelledby="{{$menu->name}}">
                 @foreach( $menu->children as $child )
-
                         <a class="dropdown-item" href="{{ $child->url }}" title="{{ $child->label }}">{{ $child->label }}</a>
-
                 @endforeach
             </div>
         @endif
