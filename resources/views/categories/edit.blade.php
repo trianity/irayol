@@ -1,6 +1,15 @@
 @extends('layouts.app')
 @push('title', 'Edit Category') 
 @section('content')
+    @foreach (['danger', 'warning', 'success', 'info'] as $key)
+        @if(Session::has($key))
+            <div class="alert alert-{{ $key }} alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                {{ Session::get($key) }}
+            </div>
+        @endif
+    @endforeach
+
     <div class="card">
         <div class="card-header clearfix">
             <div class="float-left">
@@ -17,13 +26,6 @@
         </div>
 
         <div class="card-body">
-            @if ($errors->any())
-                <ul class="alert alert-danger">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            @endif
             <form method="POST" action="{{ route('category.update', $category->id) }}" id="edit_category_form" name="edit_category_form" accept-charset="UTF-8" class="form-horizontal">
             {{ csrf_field() }}
             <input name="_method" type="hidden" value="PUT">

@@ -4,25 +4,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-collapse collapse justify-content-stretch" id="navbar6">
-        <ul class="navbar-nav">
-            
-            @if($public_menu)
-                @foreach($public_menu->items as $menu)
-                <li class="nav-item {{ count($menu->child) > 0 ? 'dropdown' : '' }}">
-                    <a class="nav-link {{ count($menu->child) > 0 ? 'dropdown-toggle' : '' }}" href="{{ $menu->link }}"  title="{{ $menu->label }}" id="{{$public_menu->name}}" role="button" data-toggle="{{ count($menu->child) > 0 ? 'dropdown' : '' }}" aria-haspopup="true" aria-expanded="false">{{ $menu->label }}</a>
-                    
-                    @if( $menu->child )            
-                        <div class="dropdown-menu" aria-labelledby="{{$public_menu->name}}">
-                            @foreach( $menu->child as $child )
-                                <a class="dropdown-item" href="{{ $child->link }}" title="{{ $child->label }}">{{ $child->label }}</a>
-                            @endforeach
-                        </div>
-                    @endif
-                </li>
-                @endforeach
-            @endif
-
-        </ul>
+ 
         <ul class="navbar-nav ml-auto">
             @auth
                 <li class="nav-item dropdown">

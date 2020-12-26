@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use App\Helpers\WMenu;
-use Theme;
-use Setting;
+use App\Models\MenuItem;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Schema;
@@ -19,13 +17,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('irayol-menu', function () {
-            return new WMenu();
-        });
-
-        if ($this->app->runningInConsole()) {
-            $this->app->register('CrestApps\CodeGenerator\CodeGeneratorServiceProvider');
-        }
 
     }
 
@@ -36,6 +27,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+ 
     }
 }

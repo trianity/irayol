@@ -7,6 +7,7 @@ use App\Http\Requests\CategoriesFormRequest;
 use App\Models\Category;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
 {
@@ -63,12 +64,17 @@ class CategoriesController extends Controller
     public function store(CategoriesFormRequest $request)
     {
         try {
+   
+            Category::create([
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
+                'description' => $request->description,
+                'is_active' => $request->is_active,
+            ]);
 
-            $data = $request->getData();
-            Category::create($data);
-            return redirect()->route('category.index')->with('success_message', 'Category was successfully added.');
-        } catch (Exception $exception) {
-            return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+            return redirect()->route('category.index')->with('success', 'Category was successfully added.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('danger', "Error: " . $e->getMessage());
         }
     }
 
@@ -110,11 +116,14 @@ class CategoriesController extends Controller
     public function update($id, CategoriesFormRequest $request)
     {
         try {
-
-            $data = $request->getData();
-
             $category = Category::findOrFail($id);
-            $category->update($data);
+
+            $category->update([
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
+                'description' => $request->description,
+                'is_active' => $request->is_active,
+            ]);
 
             return redirect()->route('category.index')
                 ->with('success_message', 'Category was successfully updated.');

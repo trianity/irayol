@@ -1,6 +1,14 @@
 @extends('layouts.app')
 @push('title', 'Create Category') 
 @section('content')
+    @foreach (['danger', 'warning', 'success', 'info'] as $key)
+        @if(Session::has($key))
+            <div class="alert alert-{{ $key }} alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                {{ Session::get($key) }}
+            </div>
+        @endif
+    @endforeach
     <div class="card">
         <div class="card-header clearfix">        
             <span class="float-left">
@@ -13,13 +21,6 @@
             </div>
         </div>
         <div class="card-body">
-            @if ($errors->any())
-                <ul class="alert alert-danger">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            @endif
             <form method="POST" action="{{ route('category.store') }}" accept-charset="UTF-8" id="create_category_form" name="create_category_form" class="form-horizontal">
                 {{ csrf_field() }}
                 @include ('categories.form', ['category' => null,])

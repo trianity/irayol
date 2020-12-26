@@ -3,14 +3,14 @@
 return [
 	'language' => 'Idioma',
 	'welcome' => '¡Hola y bienvenido!',
-	
+
 	'user-management' => [
 		'title' => 'User Management',
 		'created_at' => 'Time',
 		'fields' => [
 		],
 	],
-	
+
 	'permissions' => [
 		'title' => 'Permisos',
 		'created_at' => 'Fecha',
@@ -18,7 +18,7 @@ return [
 			'name' => 'Nombre',
 		],
 	],
-	
+
 	'roles' => [
 		'title' => 'Roles',
 		'created_at' => 'Fecha',
@@ -27,7 +27,7 @@ return [
 			'permission' => 'Permissions',
 		],
 	],
-	
+
 	'users' => [
 		'title' => 'Usuarios',
 		'created_at' => 'Fecha',
@@ -39,6 +39,7 @@ return [
 			'remember-token' => 'Recordar token',
 		],
 	],
+
 	'create' => 'Nuevo',
 	'save' => 'Guardar',
 	'cancel' => 'Cancelar',
@@ -47,6 +48,8 @@ return [
 	'update' => 'Actualizar',
 	'list' => 'Lista',
 	'delete' => 'Borrar',
+	'deleted' => 'Eliminado',
+	'cancel' => 'Cancelar',
 	'confirm_delete' => '¿Estas seguro de querer borrar este registro?',
 	'search' => 'Buscar',
 	'upload' => 'Subir',
@@ -120,6 +123,8 @@ return [
 	'no' => 'No',
 	'visibility' => 'Visibilidad',
 	'options' => 'Opciones',
+    'required' => 'Campo requerido',
+    'must_select' => 'Seleccione al menos un elemento',
 
 	// Results
 	'no_results' => 'No se encontraron registros',
@@ -138,4 +143,14 @@ return [
 	'top' => 'Arriba',
 	'optional' => 'Opcional',
 
+	'successfully_added' => 'Agregado exitosamente',
+	'link_behavior' => 'Comportamiento de enlaces',
+	'open_in_same_tab' => 'Abrir en la misma pestaña',
+	'open_in_new_tab' => 'Abrir en una pestaña nueva',
+	'successfully_updated' => 'Actualizado exitosamente',
+	'successfully_deleted' => 'Eliminado con éxito',
+	'not_found' => 'No encontrado',
+	'are_you_sure?' => '¿Estas seguro?',
+	'it_will_be_deleted_permanently' => '¡Será eliminado permanentemente!',
+	'something_went_wrong_with_ajax' => 'Algo salió mal con ajax'
 ];

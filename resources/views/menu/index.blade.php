@@ -1,15 +1,14 @@
 @extends('layouts.app')
 @push('title', 'Menu')
 @section('content')
-    @if(Session::has('success_message'))
-        <div class="alert alert-success">
-            <i class="fa fa-check-circle" aria-hidden="true"></i>
-            {!! session('success_message') !!}
-            <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
+    @foreach (['danger', 'warning', 'success', 'info'] as $key)
+        @if(Session::has($key))
+            <div class="alert alert-{{ $key }} alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                {{ Session::get($key) }}
+            </div>
+        @endif
+    @endforeach
     <div class="card">
         <div class="card-header container-fluid">
             <div class="row">
@@ -29,12 +28,12 @@
         </div>
         <div class="card-body">
             <div id="newMenu" class="collapse">
-                <form method="post" action="{{route('menu.create')}}">
+                <form method="post" action="{{route('menu.store')}}">
                     @csrf
                     <div class="form-group">
                         <label for="edit_page_per_page">{{__('global.title')}}</label>
                         <div class="input-group mb-3">            
-                            <input class="form-control" name="menu_name" id="menu_name" value="{{old('menu_name')}}" type="text" required />
+                            <input class="form-control" name="title" id="title" value="{{old('title')}}" type="text" required />
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">{{__('global.apply')}}</button>
                             </div>
@@ -57,19 +56,19 @@
                         <tbody>
                         @foreach($menus as $menu)
                             <tr>
-                                <td>{{ $menu->name }}</td>
+                                <td>{{ $menu->title }}</td>
                                 <td>{{\Carbon\Carbon::parse($menu->updated_at)->diffForHumans() }}</td>
                                 <td>
-                                    <form action="{{route('menu.active')}}" method="POST">
+                                    <form action="{{route('menu.active', $menu->id)}}" method="POST">
                                         @csrf
-                                        <input type="text" hidden name="main_menu" id="main_menu" value="{{ $menu->id }}">
+                                        <input type="hidden" name="main_menu" value="{{$menu->id}}">
                                         <button type="submit" class="btn btn-{{ $menu->id == setting('main_menu') ? 'success' : 'secondary' }} btn-sm">{{ $menu->id == setting('main_menu') ? __('global.active') : __('global.inactive') }}</button>
                                     </form>
                                 </td>
                                 <td>
-                                    <form method="POST" action="{!! route('hdeletemenug', $menu->id) !!}" accept-charset="UTF-8">
-                                    <input name="_method" value="DELETE" type="hidden">
-                                    {{ csrf_field() }}
+                                    <form method="POST" action="{!! route('menu.destroy', $menu->id) !!}" accept-charset="UTF-8">
+                                        @method('DELETE')
+                                        @csrf
 
                                         <div class="btn-group btn-group-xs float-right" role="group">
 
@@ -81,9 +80,7 @@
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </div>
-
                                     </form>
-
                                 </td>
                             </tr>
                         @endforeach

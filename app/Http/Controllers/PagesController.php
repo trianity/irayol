@@ -167,12 +167,12 @@ class PagesController extends Controller
         try {
             if ($request->main_page == setting('main_page')) {
                 setting(['main_page' => ''])->save();
-            } else{
+            } else {
                 setting(['main_page' => $request->main_page])->save();
             }
             return redirect()->back()->with('success', 'Page main was successfully change.');
-        } catch (Exception $exception) {
-            return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+        } catch (\Exception $exception) {
+            return back()->withInput()->withErrors(['danger' => 'Unexpected error occurred while trying to process your request.']);
         }
     }
 }

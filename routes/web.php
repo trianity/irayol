@@ -15,6 +15,9 @@ Route::group(['middleware' => 'setTheme'], function () {
     Route::get('/', 'FrontendController@index')->name('home');
     Route::get('/blog/{slug}', 'FrontendController@showblog')->name('blog.show'); //show the blog page
     Route::get('/{slug}', 'FrontendController@showpage')->name('page.show'); //show the page
+    Route::get('/category/{slug}', 'FrontendController@category')->name('site.category');
+    Route::get('/page/{slug}', 'FrontendController@page')->name('site.page');
+    Route::get('/post/{slug}', 'FrontendController@post')->name('site.post');
 });
 
 Route::group(['prefix' => 'admin'], function() {
@@ -38,16 +41,23 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
     Route::post('/page/active', 'PagesController@active')->name('page.active');
 
     // Menu
-    Route::get('/menu',  'MenuController@index')->name('menu.index');
-    Route::get('/menu/new/{id}', 'MenuController@new')->name('menu.new');
+    Route::get('/menu', 'MenuController@index')->name('menu.index');
+    Route::post('/menu', 'MenuController@store')->name('menu.store');
     Route::get('/menu/edit/{id}', 'MenuController@edit')->name('menu.edit');
-    Route::post('/menu/active', 'MenuController@active')->name('menu.active');
-    Route::post('/addcustommenu', ['as' => 'haddcustommenu', 'uses' => 'MenuController@addcustommenu']);
-    Route::post('/deleteitemmenu', ['as' => 'hdeleteitemmenu', 'uses' => 'MenuController@deleteitemmenu']);
-    Route::post('/deletemenug', ['as' => 'hdeletemenug', 'uses' => 'MenuController@deletemenug']);
-    Route::post('/menu/create', 'MenuController@createnewmenu')->name('menu.create');
-    Route::post('/generatemenucontrol', ['as' => 'hgeneratemenucontrol', 'uses' => 'MenuController@generatemenucontrol']);
-    Route::post('/updateitem', ['as' => 'hupdateitem', 'uses' => 'MenuController@updateitem']);
+    Route::post('/menu/{menu}', 'MenuController@update')->name('menu.update');
+    Route::delete('/menu/{menu}', 'MenuController@destroy')->name('menu.destroy');
+    Route::post('/menu/active/{id}', 'MenuController@active')->name('menu.active');
+
+    route::get('menu-item', 'MenuItemController@menuItem')->name('menu-item');
+    route::get('search-menu-item', 'MenuItemController@menuItemSearch')->name('search-menu-item');
+    route::post('menu-item/save', 'MenuItemController@menuItemSave')->name('save-menu-item');
+
+    route::post('menu-item/update', 'MenuItemController@menuItemUpdate')->name('update-menu-item');
+    route::delete('menu-item/delete', 'MenuItemController@menuItemDelete')->name('delete-menu-item');
+
+    //change order on ajax
+    route::post('change-menu-order', 'MenuItemController@changeMenuOrder')->name('change-menu-order');
+
 
     // Setting
     Route::resource('setting', 'SettingsController');

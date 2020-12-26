@@ -6,38 +6,46 @@ use Illuminate\Database\Eloquent\Model;
 
 class MenuItem extends Model
 {
+    protected $fillable = [];
+    protected $table='menu_item';
 
-    protected $table = null;
-
-    protected $fillable = ['label', 'link', 'parent', 'sort', 'class', 'menu', 'depth', 'role_id'];
-
-    public function __construct(array $attributes = [])
+    public function menu()
     {
-        //parent::construct( $attributes );
-        $this->table = 'menu_items';
+        return $this->hasOne(Menu::class, 'id', 'menu_id');
     }
 
-    public function getsons($id)
+    public function parent()
     {
-        return $this->where("parent", $id)->get();
-    }
-    public function getall($id)
-    {
-        return $this->where("menu", $id)->orderBy("sort", "asc")->get();
+        return $this->hasOne(static::class, 'id', 'parent')->orderBy('order');
     }
 
-    public static function getNextSortRoot($menu)
+    public function children()
     {
-        return self::where('menu', $menu)->max('sort') + 1;
+        return $this->hasMany(static::class, 'parent', 'id')->orderBy('order');
     }
 
-    public function parent_menu()
+    public static function tree()
     {
-        return $this->belongsTo(Menu::class, 'menu');
+        return static::with(implode('.', array_fill(0, 100, 'children')))->where('parent', '=', '0')->orderBy('order')->get();
     }
 
-    public function child()
+    public function category()
     {
-        return $this->hasMany(MenuItem::class, 'parent')->orderBy('sort', 'ASC');
+        return $this->belongsTo(Category::class);
+    }
+
+    public function page()
+    {
+        return $this->belongsTo(Page::class);
+    }
+
+    public function Post()
+    {
+        return $this->belongsTo(Blog::class);
+    }
+
+    public function postByCategory()
+    {
+        return $this->hasMany(Blog::class, 'category_id', 'category_id')->orderBy('id', 'desc')->take(4);
     }
 }

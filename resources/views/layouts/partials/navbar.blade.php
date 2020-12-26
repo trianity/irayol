@@ -117,7 +117,7 @@
                     <a class="nav-link {{ ! route::is('addons.index') ? : 'active'}}" href="{{ route('addons.index') }}"><i class="nav-icon fas fa-box-open"></i> <p>{{ __('global.modules') }}</p></a>
                 </li>
                 @endcan
-
+                
                 @can('menu.index')
                 <li class="nav-item">
                     <a class="nav-link {{ ! route::is('menu.index') ? : 'active'}}" href="{{ route('menu.index') }}"><i class="nav-icon fa fa-bars" aria-hidden="true"></i> <p>{{ __('global.menu') }}</p></a>

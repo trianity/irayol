@@ -30,20 +30,14 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = [
-                  'name',
-                  'description',
-                  'is_active'
-              ];
+    protected $fillable = ['name', 'slug', 'description', 'is_active'];
 
     /**
      * The attributes that should be mutated to dates.
      *
      * @var array
      */
-    protected $dates = [
-               'deleted_at'
-           ];
+    protected $dates = ['deleted_at'];
     
     /**
      * The attributes that should be cast to native types.

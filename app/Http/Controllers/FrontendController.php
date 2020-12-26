@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\GlobalSetting;
 use App\Models\Blog;
-use App\Models\Page;
+use App\Models\Category;
 use App\Models\Menu;
-use Setting;
+use App\Models\MenuItem;
+use App\Models\Page;
 
 class FrontendController extends Controller
 {
     //main home
     public function index()
     {
-        $public_menu = Menu::where('id', setting('main_menu'))->first();
+        $primaryMenu = MenuItem::where('menu_id', setting('main_menu'))->get();
 
         if (setting('main_page')) {
             $page = Page::findOrFail(setting('main_page'));
-            return view('home.index', compact('public_menu', 'page'));
+            return view('home.index', compact('page', 'primaryMenu'));
         }
-        return view('home.default', compact('public_menu'));
+        return view('home.default', compact('primaryMenu'));
     }
 
     //show blog pages
@@ -27,11 +27,10 @@ class FrontendController extends Controller
     {
         $setting = '';
         $blog = Blog::where('slug', '=', $slug)->first();
-        $public_menu = Menu::where('id', setting('main_menu'))->first();
         if (!$blog) {
             abort(404);
         }
-        return view('blog.show',compact('public_menu', 'blog', 'setting'));
+        return view('blog.show',compact('blog', 'setting'));
 
     }
 
@@ -40,10 +39,27 @@ class FrontendController extends Controller
     {
         $setting = '';
         $page = Page::where('slug', '=', $slug)->first();
-        $public_menu = Menu::where('id', setting('main_menu'))->first();
         if (!$page) {
             abort(404);
         }
-        return view('page.show', compact('public_menu', 'page', 'setting'));
+        return view('page.show', compact('page', 'setting'));
+    }
+
+    public function category($slug)
+    {
+        $category = Category::where('slug', $slug)->first();
+        dd($category);
+    }
+
+    public function page($slug)
+    {
+        $page = Page::where('slug', $slug)->first();
+        dd($page);
+    }
+
+    public function post($slug)
+    {
+        $post = Blog::where('slug', $slug)->first();
+        dd($post);
     }
 }
