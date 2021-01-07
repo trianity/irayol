@@ -6,7 +6,7 @@
 
     <div id="navbarContent" class="navbar-collapse collapse justify-content-stretch">
         <ul class="navbar-nav">
-            @each('partials.menu-item', $primaryMenu, 'menu', 'partials.nothing')
+            @each('partials.menu-item', $primaryMenu, 'menu')
         </ul>
         <ul class="navbar-nav ml-auto">
             @auth

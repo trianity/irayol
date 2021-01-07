@@ -45,6 +45,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.3/feather.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script type="text/javascript" src="{{ asset('themes/' . setting('theme_active') . '/js/scripts.js') }}  "></script>
+    <script src="{{ asset('themes/' . setting('theme_active') . '/js/custom.js') }}" type="text/javascript"></script>
 </body>
 
 </html>

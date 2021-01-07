@@ -49,7 +49,6 @@ return [
 	'list' => 'Lista',
 	'delete' => 'Borrar',
 	'deleted' => 'Eliminado',
-	'cancel' => 'Cancelar',
 	'confirm_delete' => '¿Estas seguro de querer borrar este registro?',
 	'search' => 'Buscar',
 	'upload' => 'Subir',

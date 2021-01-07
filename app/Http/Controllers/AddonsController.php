@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Module;
-use Zipper;
 use File;
+use Madnest\Madzipper\Facades\Madzipper;
 
 class AddonsController extends Controller
 {
@@ -38,7 +38,9 @@ class AddonsController extends Controller
                 break;
             }
         }
+
         $module = Module::find($module_name);
+        
         if($module) {
             if($module->enabled())
                 $module->disable();
@@ -67,9 +69,9 @@ class AddonsController extends Controller
     public function store(Request $request)
     {
         try {
-            $addon_name = pathinfo(Zipper::make($request->file('addon'))->listFiles('/\module.json/i')[0], PATHINFO_DIRNAME);
-            $addon_info = json_decode(Zipper::make($request->file('addon'))->getFileContent($addon_name.'/module.json'));
-            Zipper::make($request->file('addon'))->folder($addon_name)->extractTo(base_path('Modules/' . $addon_name));
+            $addon_name = pathinfo(Madzipper::make($request->file('addon'))->listFiles('/\module.json/i')[0], PATHINFO_DIRNAME);
+            $addon_info = json_decode(Madzipper::make($request->file('addon'))->getFileContent($addon_name.'/module.json'));
+            Madzipper::make($request->file('addon'))->folder($addon_name)->extractTo(base_path('Modules/' . $addon_name));
             $request->session()->flash('success', "Successfully added $addon_name addon");
         } catch (\Exception $e) {
             return redirect()->route('addons.index')->with('danger', "Error: ". $e->getMessage());

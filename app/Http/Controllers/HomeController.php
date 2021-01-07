@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Page;
 use App\Models\User;
 use App\Models\Media;
-use File;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {

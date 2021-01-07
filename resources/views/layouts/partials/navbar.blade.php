@@ -12,9 +12,7 @@
         @guest
         <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('home') }}"><i class="fa fa-arrow-left custom"></i> Back to Site</a>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('home') }}"><i class="fa fa-arrow-left custom"></i> Back to Site</a></li>
         @else
         <li class="nav-item">
             <a class="nav-link" href="{{ route('home') }}" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i> {{__('global.view_site')}}</a>
@@ -70,69 +68,69 @@
 		<nav class="mt-2">
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 
-                <li class="nav-item">
-                    <a href="{{route('admin.home')}}" class="nav-link {{ ! route::is('admin.home') ? : 'active'}}"><i class="nav-icon fas fa-home"></i><p>{{__('global.home')}}</p></a>
+               <li class="nav-item">
+                    <a href="{{route('admin.home')}}" class="nav-link {{ request()->routeIs('admin.home') ? 'active' : ''  }}"><i class="nav-icon fas fa-home"></i><p>{{__('global.home')}}</p></a>
                 </li>
                 
                 @can('page.index')
 				<li class="nav-item has-treeview">
-					<a href="#" class="nav-link {{ ! route::is('page.index', 'page.create')  ? : 'active'}}"><i class="nav-icon far fa-file-alt"></i><p>{{ __('global.pages') }}<i class="fas fa-angle-left right"></i></p></a>
+					<a href="#" class="nav-link {{ request()->routeIs('page.index', 'page.create')  ? 'active' : ''}}"><i class="nav-icon far fa-file-alt"></i><p>{{ __('global.pages') }}<i class="fas fa-angle-left right"></i></p></a>
 					<ul class="nav nav-treeview">
-                        <li class="nav-item"><a class="nav-link {{ ! route::is('page.index') ? : 'active'}}" href="{{ route('page.index') }}"><i class="far fa-circle nav-icon"></i> {{ __('global.list_page') }}</a></li>
-                        <li class="nav-item"><a class="nav-link {{ ! route::is('page.create') ? : 'active'}}" href="{{ route('page.create') }}"><i class="far fa-circle nav-icon"></i> {{ __('global.create') }}</a></li>
+                        <li class="nav-item"><a class="nav-link {{ request()->routeIs('page.index') ? 'active' : ''}}" href="{{ route('page.index') }}"><i class="far fa-circle nav-icon"></i> {{ __('global.list_page') }}</a></li>
+                        <li class="nav-item"><a class="nav-link {{ request()->routeIs('page.create') ? 'active' : ''}}" href="{{ route('page.create') }}"><i class="far fa-circle nav-icon"></i> {{ __('global.create') }}</a></li>
                     </ul>                    
                 </li>
                 @endcan
 
                 @can('blog.index')
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link {{ ! route::is('blog.index', 'blog.create') ? : 'active'}}"><i class="nav-icon fas fa-file-alt"></i> <p> {{ __('global.blogs') }} <i class="fas fa-angle-left right"></i></p></a>
+                    <a href="#" class="nav-link {{ request()->routeIs('blog.index', 'blog.create') ? 'active' : ''}}"><i class="nav-icon fas fa-file-alt"></i> <p> {{ __('global.blogs') }} <i class="fas fa-angle-left right"></i></p></a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"><a class="nav-link {{ ! route::is('blog.index') ? : 'active'}}" href="{{ route('blog.index') }}"><i class="far fa-circle nav-icon"></i> {{__('global.list_blogs')}}</a></li>
-                        <li class="nav-item"><a class="nav-link {{ ! route::is('blog.create') ? : 'active'}}" href="{{ route('blog.create') }}"><i class="far fa-circle nav-icon"></i> {{ __('global.create') }}</a></li>
+                        <li class="nav-item"><a class="nav-link {{ request()->routeIs('blog.index') ? 'active' : ''}}" href="{{ route('blog.index') }}"><i class="far fa-circle nav-icon"></i> {{__('global.list_blogs')}}</a></li>
+                        <li class="nav-item"><a class="nav-link {{ request()->routeIs('blog.create') ? 'active' : ''}}" href="{{ route('blog.create') }}"><i class="far fa-circle nav-icon"></i> {{ __('global.create') }}</a></li>
                     </ul>
                 </li>
                 @endcan
 
                 @can('category.index')
                 <li class="nav-item">
-                    <a class="nav-link {{ ! route::is('category.index') ? : 'active'}}" href="{{ route('category.index') }}"><i class="nav-icon fa fa-tag" aria-hidden="true"></i> <p>{{ __('global.categories') }}</p></a>
+                    <a class="nav-link {{ request()->routeIs('category.index') ? 'active' : ''}}" href="{{ route('category.index') }}"><i class="nav-icon fa fa-tag" aria-hidden="true"></i> <p>{{ __('global.categories') }}</p></a>
                 </li>
                 @endcan
                 
                 @can('media.index')
                 <li class="nav-item">
-                    <a class="nav-link {{ ! route::is('media.index') ? : 'active'}}" href="{{ route('media.index') }}"><i class="nav-icon far fa-image"></i> <p>{{ __('global.media') }}</p></a>
+                    <a class="nav-link {{ request()->routeIs('media.index') ? 'active' : ''}}" href="{{ route('media.index') }}"><i class="nav-icon far fa-image"></i> <p>{{ __('global.media') }}</p></a>
                 </li>
                 @endcan
 
                 @can('theme.index')
                 <li class="nav-item">
-                    <a class="nav-link {{ ! route::is('themes.index') ? : 'active'}}" href="{{ route('themes.index') }}"><i class="nav-icon fas fa-paint-brush"></i> <p>{{ __('global.themes') }}</p></a>
+                    <a class="nav-link {{ request()->routeIs('themes.index') ? 'active' : ''}}" href="{{ route('themes.index') }}"><i class="nav-icon fas fa-paint-brush"></i> <p>{{ __('global.themes') }}</p></a>
                 </li>
                 @endcan
 
                 @can('addons.index')
                 <li class="nav-item">
-                    <a class="nav-link {{ ! route::is('addons.index') ? : 'active'}}" href="{{ route('addons.index') }}"><i class="nav-icon fas fa-box-open"></i> <p>{{ __('global.modules') }}</p></a>
+                    <a class="nav-link {{ request()->routeIs('addons.index') ? 'active' : ''}}" href="{{ route('addons.index') }}"><i class="nav-icon fas fa-box-open"></i> <p>{{ __('global.modules') }}</p></a>
                 </li>
                 @endcan
                 
                 @can('menu.index')
                 <li class="nav-item">
-                    <a class="nav-link {{ ! route::is('menu.index') ? : 'active'}}" href="{{ route('menu.index') }}"><i class="nav-icon fa fa-bars" aria-hidden="true"></i> <p>{{ __('global.menu') }}</p></a>
+                    <a class="nav-link {{ request()->routeIs('menu.index') ? 'active' : ''}}" href="{{ route('menu.index') }}"><i class="nav-icon fa fa-bars" aria-hidden="true"></i> <p>{{ __('global.menu') }}</p></a>
                 </li>
                 @endcan
 
                 @can('users.index')
                 <li class="nav-item">
-                    <a class="nav-link {{ ! route::is('users.index') ? : 'active'}}" href="{{ route('users.index') }}"><i class="nav-icon fa fa-users" aria-hidden="true"></i> <p>{{ __('global.users.title') }}</p></a>
+                    <a class="nav-link {{ request()->routeIs('users.index') ? 'active' : ''}}" href="{{ route('users.index') }}"><i class="nav-icon fa fa-users" aria-hidden="true"></i> <p>{{ __('global.users.title') }}</p></a>
                 </li>
                 @endcan
 
                 @can('setting.index')
                 <li class="nav-item">
-                    <a class="nav-link {{ ! route::is('setting.index') ? : 'active'}}" href="{{ route('setting.index') }}"><i class="nav-icon fa fa-cogs" aria-hidden="true"></i> <p>{{ __('global.settings') }}</p></a>
+                    <a class="nav-link {{ request()->routeIs('setting.index') ? 'active' : ''}}" href="{{ route('setting.index') }}"><i class="nav-icon fa fa-cogs" aria-hidden="true"></i> <p>{{ __('global.settings') }}</p></a>
                 </li>	
                 @endcan
 			</ul>

@@ -64,14 +64,12 @@ class CategoriesController extends Controller
     public function store(CategoriesFormRequest $request)
     {
         try {
-   
             Category::create([
                 'name' => $request->name,
                 'slug' => Str::slug($request->name),
                 'description' => $request->description,
                 'is_active' => $request->is_active,
             ]);
-
             return redirect()->route('category.index')->with('success', 'Category was successfully added.');
         } catch (\Exception $e) {
             return redirect()->back()->with('danger', "Error: " . $e->getMessage());

@@ -2,7 +2,7 @@
 
 return [
 
-    /*
+	/*
     |--------------------------------------------------------------------------
     | Root path where theme Views will be located.
     | Can be outside default views path e.g.: resources/themes
@@ -11,7 +11,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'themes_path' => base_path('resources/themes'), // eg: base_path('resources/themes')
+	'themes_path' => base_path('resources/themes'), // eg: base_path('resources/themes')
 
 	/*
 	|--------------------------------------------------------------------------
@@ -63,7 +63,6 @@ return [
 		'default' => [
 			'views-path'	=> 'default',
 		],
-
 		/*
 		|---------------------------[ Example Structure ]--------------------------
 		|

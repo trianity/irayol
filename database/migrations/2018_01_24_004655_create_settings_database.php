@@ -14,7 +14,7 @@ class CreateSettingsDatabase extends Migration
     public function up()
     {
         Schema::create('settings', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
 			$table->string('key', 191)->index();
             $table->text('value', 65535)->nullable();
             $table->timestamps();

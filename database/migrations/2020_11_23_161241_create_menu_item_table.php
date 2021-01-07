@@ -14,7 +14,7 @@ class CreateMenuItemTable extends Migration
     public function up()
     {
         Schema::create('menu_item', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('label');
             $table->bigInteger('parent')->nullable()->unsigned()->default(null);
             $table->bigInteger('menu_id')->unsigned();

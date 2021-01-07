@@ -58,7 +58,6 @@
                                         </form>
                                     </div>
                                     <div class="col-6">
-                                        
                                         <form method="POST" action="{!! route('addons.destroy', $module->name) !!}" accept-charset="UTF-8">
                                             <input name="_method" value="DELETE" type="hidden">
                                             {{ csrf_field() }}

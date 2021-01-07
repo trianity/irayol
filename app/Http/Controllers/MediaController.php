@@ -82,7 +82,7 @@ class MediaController extends Controller
                     for ($i = 0; $i < count($images); $i++) {
                         $media->user_id = Auth::id();
                         $media->file = $images[$i];
-                        $media->path = url('/') . "/storage/uploads/" . $images[$i];
+                        $media->path = "/storage/uploads/" . $images[$i];
                         $media->extension = $exten[$i];
                         $media->save();
                     }

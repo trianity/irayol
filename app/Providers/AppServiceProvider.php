@@ -2,11 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\MenuItem;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Storage;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        //
     }
 
     /**
@@ -27,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
- 
+        Paginator::useBootstrap();
     }
 }

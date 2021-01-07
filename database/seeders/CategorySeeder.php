@@ -1,8 +1,10 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
-class PageSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +13,6 @@ class PageSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Page::class, 10)->create();
+        \App\Models\Category::factory(50)->create();
     }
-
 }

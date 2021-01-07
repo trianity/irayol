@@ -28,7 +28,6 @@
     </div>
 
     <div class="card-body">
-
         <div id="item" class="collapse">
             <form method="get" action="{{route('blog.index')}}">
                 <div class="form-group">
@@ -65,8 +64,8 @@
                     <tr>
                         <th>{{__('global.title')}}</th>
                         <th>{{__('global.author')}}</th>
-                        <th>{{__('global.update_at')}}</th>
                         <th>{{__('global.categories')}}</th>
+                        <th>{{__('global.update_at')}}</th>
                         <th colspan="3">{{__('global.action')}}</th>
                     </tr>
                 </thead>

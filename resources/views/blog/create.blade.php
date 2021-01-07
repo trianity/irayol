@@ -3,13 +3,14 @@
 @section('content')
 
 <div class="container mt-4">
-    @if ($errors->any())
-        <ul class="alert alert-danger mt-4">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+    @foreach (['danger', 'warning', 'success', 'info'] as $key)
+        @if(Session::has($key))
+            <div class="alert alert-{{ $key }} alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                {{ Session::get($key) }}
+            </div>
+        @endif
+    @endforeach
 	<form action="{{route('blog.store')}}" method="POST" class="">
         <div class="row">
             <div class="col-md-8">				

@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Database\Seeder;
-use App\Models\User;
+namespace Database\Seeders;
 
-class UserSeed extends Seeder
+use Illuminate\Database\Seeder;
+
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,14 +13,14 @@ class UserSeed extends Seeder
      */
     public function run()
     {
-        $jesus = User::create([
+        \App\Models\User::factory(10)->create();
+
+        $jesus = \App\Models\User::create([
             'name' => 'Jesus Avelar',
             'email' => 'admin@admin.com',
             'password' => bcrypt('123456')
         ]);
 
         $jesus->assignRole('admin');
-
-        factory(User::class, 10)->create();
     }
 }

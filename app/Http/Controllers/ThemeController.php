@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Theme;
+use Igaster\LaravelTheme\Facades\Theme;
 use Exception;
-use Zip;
-use File;
-use Zipper;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Madnest\Madzipper\Facades\Madzipper;
 
 class ThemeController extends Controller
 {
@@ -68,7 +67,7 @@ class ThemeController extends Controller
     public function store(Request $request)
     {
         try {
-            $zip = Zipper::make($request->file('theme'));
+            $zip = Madzipper::make($request->file('theme'));
             $files = collect($zip->listFiles());
             $theme_json = $files->flatten()->filter(function ($file) {
                 return Str::endsWith($file, 'theme.json');

@@ -14,8 +14,8 @@ class CreateMediaDatabase extends Migration
     public function up()
     {
         Schema::create('media', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->id();
+            $table->bigInteger('user_id')->unsigned();
             $table->string('file');
             $table->string('path');
             $table->string('extension');

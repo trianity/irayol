@@ -2,50 +2,35 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-    use HasRoles;
+    use HasFactory, Notifiable, HasRoles;
 
     /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'users';
-
-    /**
-    * The database primary key value.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id';
-
-    /**
-     * Attributes that should be mass-assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'email',
-        'email_verified_at',
         'name',
+        'email',
         'password',
-        'remember_token'
     ];
 
     /**
-     * The attributes that should be mutated to dates.
+     * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $dates = [
-        'created_at',
-        'updated_at',
+    protected $hidden = [
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -53,7 +38,9 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
     /**
      * Get the blogs for this model.
@@ -62,7 +49,7 @@ class User extends Authenticatable
      */
     public function blogs()
     {
-        return $this->hasMany('App\Models\Blog','user_id','id');
+        return $this->hasMany('App\Models\Blog', 'user_id', 'id');
     }
 
     /**
@@ -72,7 +59,7 @@ class User extends Authenticatable
      */
     public function media()
     {
-        return $this->hasMany('App\Models\Medium','user_id','id');
+        return $this->hasMany('App\Models\Medium', 'user_id', 'id');
     }
 
     /**
@@ -82,7 +69,7 @@ class User extends Authenticatable
      */
     public function pages()
     {
-        return $this->hasMany('App\Models\Page','user_id','id');
+        return $this->hasMany('App\Models\Page', 'user_id', 'id');
     }
 
     /**
@@ -116,7 +103,7 @@ class User extends Authenticatable
     public function getEmailVerifiedAtAttribute($value)
     {
         if ($value !== null) {
-        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('Y-m-d h:i:s');
+            return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('Y-m-d h:i:s');
         } else {
             return '';
         }
