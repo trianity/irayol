@@ -114,3 +114,7 @@ if ($(window).width() < 992) {
         $('.dropdown').on('hide.bs.dropdown', () => $(this).find('.submenu').hide());
     });
 }
+
+document.getElementById('upload_files').addEventListener('click', () => {
+    document.getElementById('input_file').click()
+})

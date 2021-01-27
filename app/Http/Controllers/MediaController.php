@@ -23,22 +23,9 @@ class MediaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $search = $request->search;
-
-        if (!empty($request->number)) {
-            $page = $request->number;
-        } else {
-            $page = 12;
-        }
-
-        if (!empty($search)) {
-            $media = Media::where('image_name', 'LIKE', '%' . $search . '%')->get();
-        } else {
-            $media = Media::paginate($page);
-        }
-        return view('media.index', compact('media'));
+        return view('media.index');
     }
 
     /**

@@ -16,11 +16,11 @@ class CreateMenuItemTable extends Migration
         Schema::create('menu_item', function (Blueprint $table) {
             $table->id();
             $table->string('label');
-            $table->bigInteger('parent')->nullable()->unsigned()->default(null);
             $table->bigInteger('menu_id')->unsigned();
             $table->bigInteger('category_id')->nullable()->unsigned()->default(null);
             $table->bigInteger('page_id')->nullable()->unsigned()->default(null);
             $table->unsignedBigInteger('post_id')->nullable();
+            $table->bigInteger('parent')->nullable()->unsigned()->default(null);
             $table->integer('order')->default(0);
             $table->string('source');
             $table->string('url')->nullable();

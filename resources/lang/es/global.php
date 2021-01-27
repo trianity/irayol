@@ -123,7 +123,8 @@ return [
 	'visibility' => 'Visibilidad',
 	'options' => 'Opciones',
     'required' => 'Campo requerido',
-    'must_select' => 'Seleccione al menos un elemento',
+	'must_select' => 'Seleccione al menos un elemento',
+	'select_option' => 'Seleccione una opción',
 
 	// Results
 	'no_results' => 'No se encontraron registros',

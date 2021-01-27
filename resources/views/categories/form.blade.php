@@ -23,7 +23,7 @@
     <label for="is_active" class="control-label">{{__('global.status')}}</label>
     <div class="checkbox">
         <label for="is_active_1">
-            <input id="is_active_1" class="" name="is_active" type="checkbox" value="1" {{ old('is_active', optional($category)->is_active) == '1' ? 'checked' : '' }}>
+            <input id="is_active_1" name="is_active" type="checkbox" value="1" {{ old('is_active', optional($category)->is_active) == '1' ? 'checked' : '' }}>
             {{strtolower(__('global.active'))}}
         </label>
     </div>

@@ -22,6 +22,7 @@
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700" rel="stylesheet">
         @stack('css')
+        @livewireStyles
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">        
         <div class="wrapper" id="app">
@@ -56,6 +57,8 @@
         
         <script type="text/javascript" src="{{ asset('manager/js/custom.js')}}"></script>
         <!-- Javascript -->
+        @livewireScripts
+        
         @stack('js')
 
         <!-- Javascript -->
