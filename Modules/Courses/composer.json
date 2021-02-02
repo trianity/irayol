@@ -1,0 +1,25 @@
+{
+    "name": "avegonia/courses",
+    "description": "",
+    "authors": [
+        {
+            "name": "Jesús Avelar",
+            "email": "jesus.avelar.nav@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Courses\\Providers\\CoursesServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Courses\\": ""
+        }
+    }
+}
