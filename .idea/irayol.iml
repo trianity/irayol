@@ -131,5 +131,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jquery.validate" level="application" />
+    <orderEntry type="library" name="fancybox" level="application" />
+    <orderEntry type="library" name="all" level="application" />
+    <orderEntry type="library" name="jquery-ui" level="application" />
+    <orderEntry type="library" name="flag-icon-css" level="application" />
+    <orderEntry type="library" name="jquery-sortablejs" level="application" />
+    <orderEntry type="library" name="sortablejs" level="application" />
   </component>
 </module>
