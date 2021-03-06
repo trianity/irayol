@@ -17,9 +17,11 @@
     padding: 0;
     list-style: none;
 }
+
 .dd-list .dd-list {
     padding-left: 30px;
 }
+
 .dd-collapsed .dd-list {
     display: none;
 }
@@ -53,6 +55,7 @@
     box-sizing: border-box;
     -moz-box-sizing: border-box;
 }
+
 .dd-empty {
     border: 1px dashed #bbb;
     min-height: 100px;
@@ -69,9 +72,11 @@
     pointer-events: none;
     z-index: 9999;
 }
+
 .dd-dragel > .dd-item .dd-handle {
     margin-top: 0;
 }
+
 .dd-dragel .dd-handle {
     -webkit-box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.1);
@@ -120,6 +125,7 @@
 .dd-handle, .dd-handle:hover {
     background: #ffc107;
 }
+
 .dd-item > button {
     display: block;
     position: relative;
@@ -139,6 +145,7 @@
     text-align: center;
     font-weight: 700;
 }
+
 .dd-item > button:before {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
@@ -149,6 +156,7 @@
     text-align: center;
     text-indent: 0;
 }
+
 .dd-item > button[data-action="collapse"]:before {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
@@ -164,6 +172,7 @@
     box-sizing: border-box;
     -moz-box-sizing: border-box;
 }
+
 .dd-empty {
     border: 1px dashed #bbb;
     min-height: 100px;
@@ -171,14 +180,17 @@
     background-size: 60px 60px;
     background-position: 0 0, 30px 30px;
 }
+
 .dd-dragel {
     position: absolute;
     pointer-events: none;
     z-index: 9999;
 }
+
 .dd-dragel > .dd-item .dd-handle {
     margin-top: 0;
 }
+
 .dd-dragel .dd-handle {
     -webkit-box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.1);

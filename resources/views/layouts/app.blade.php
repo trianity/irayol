@@ -51,6 +51,9 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
         <script type="text/javascript" src="{{ asset('manager/AdminLTE-3.0.5/dist/js/adminlte.js') }}"></script>
         
+        <!-- Sweetalert 2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
         <!-- Lazy load -->
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.6/jquery.lazy.min.js"></script>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.6/jquery.lazy.plugins.min.js"></script>

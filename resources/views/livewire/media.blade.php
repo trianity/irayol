@@ -53,7 +53,7 @@
             @if ($medias->count())    
                 {{ $medias->links() }}
             @else
-                No se encontraron resultados para "{{$search}}" al mostrar {{$perPage}} en la página {{$page}}
+                No se encontraron resultados en la página {{$page}}
             @endif
         </div>
     </div>

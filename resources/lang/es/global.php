@@ -89,6 +89,7 @@ return [
 	'themes' => 'Temas',
 	'modules' => 'Modulos',
 	'menus' => 'Menus',
+	'menu' => 'Menú',
 
 	// Card header
 	'list_page' => 'Lista de paginas',

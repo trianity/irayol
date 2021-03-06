@@ -5,7 +5,7 @@
     </button>
     <div class="navbar-collapse collapse justify-content-stretch" id="navbar6">
         <ul class="navbar-nav">
-            @each('partials.menu-item', $primaryMenu, 'menu')
+            @each('partials.menu-item', mainMenu(), 'menu')
         </ul>
         <ul class="navbar-nav ml-auto">
             @auth

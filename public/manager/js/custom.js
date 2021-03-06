@@ -115,6 +115,6 @@ if ($(window).width() < 992) {
     });
 }
 
-document.getElementById('upload_files').addEventListener('click', () => {
-    document.getElementById('input_file').click()
-})
+$('#upload_files').click(function() {
+    $('#input_file').click();
+});
