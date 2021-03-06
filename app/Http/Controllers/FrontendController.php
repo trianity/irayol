@@ -4,22 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Category;
-use App\Models\Menu;
-use App\Models\MenuItem;
 use App\Models\Page;
 
 class FrontendController extends Controller
 {
     //main home
     public function index()
-    {
-        $primaryMenu = MenuItem::tree()->where('menu_id', setting('main_menu'));
- 
+    { 
         if (setting('main_page')) {
             $page = Page::findOrFail(setting('main_page'));
-            return view('home.index', compact('page', 'primaryMenu'));
+            return view('home.index', compact('page'));
         }
-        return view('home.default', compact('primaryMenu'));
+        return view('home.default');
     }
 
     //show blog pages

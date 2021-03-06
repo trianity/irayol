@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\MenuItem;
+
 function module_enabled($alias)
 {
     $module = \Module::findByAlias($alias);
@@ -23,4 +25,8 @@ function menuUrl($menu)
         return route('site.post', ['id' => $menu->post->slug]);
 
     endif;
+}
+
+function mainMenu() {
+    return MenuItem::tree()->where('menu_id', setting('main_menu'));
 }
