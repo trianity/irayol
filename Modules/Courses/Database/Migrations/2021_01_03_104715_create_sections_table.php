@@ -17,7 +17,6 @@ class CreateSectionsTable extends Migration
             $table->id();
             $table->bigInteger('course_id')->unsigned();
             $table->string('title');
-            $table->string('slug')->unique();
             $table->string('duration')->nullable();
             $table->integer('order')->default(0);
             $table->string('access')->nullable()->default('pay')->comment('free, pay');

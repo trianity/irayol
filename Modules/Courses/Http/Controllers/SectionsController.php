@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Courses\Entities\Section;
 use Illuminate\Contracts\Support\Renderable;
-use Modules\Courses\Entities\Classe;
+use Modules\Courses\Http\Requests\CreateSectionRequest;
 
 class SectionsController extends Controller
 {
@@ -34,17 +34,19 @@ class SectionsController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(CreateSectionRequest $request)
     {
         try {            
-            Section::create([
-                'course_id' => $request->course_id,
-                'title' => $request->title,
-                'slug' => Str::slug($request->title)
-            ]);
-            return redirect()->back()->with('success', __('courses::global.successfully_added'));
+            $section = Section::updateOrCreate(
+                ['id' => $request->section_id],
+                [
+                    'course_id' => $request->course_id, 
+                    'title' => $request->title, 
+                ]
+            );
+            return response()->json(['status' => 'success', 'message' =>  $section]);
         } catch (\Throwable $th) {
-            return redirect()->back()->with('danger', "Error: " . $th->getMessage());
+            return response()->json(['status' => 'danger', 'message' => $th->getMessage()]);
         }
     
     }
@@ -66,7 +68,8 @@ class SectionsController extends Controller
      */
     public function edit($id)
     {
-        return view('courses::edit');
+        $section  = Section::where('id', $id)->first();
+        return response()->json(['status' => 'success', 'message' =>  $section]);
     }
 
     /**
@@ -85,20 +88,13 @@ class SectionsController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy(Section $section)
-    {
+    public function destroy($id)
+    {     
         try {
-            $section->delete();
-            return redirect()->back()->with('warning', __('courses::global.successfully_destroy'));
+            Section::where('id', $id)->delete();
+            return response()->json(['status' => 'warning', 'message' =>  __('courses::global.successfully_destroy')]);
         } catch (\Throwable $e) {
-            return redirect()->back()->with('danger', "Error: " . $e->getMessage());
+            return response()->json(['status' => 'danger', 'message' => $e->getMessage()]);
         }
-    }
-
-    public function classe($id)
-    {
-        $section = Section::findOrFail($id);
-        $classes = Classe::where('section_id', $section->id)->get();
-        return view('courses::classes.index', compact('section', 'classes'));
     }
 }

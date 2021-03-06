@@ -30,7 +30,6 @@
                                 <th>{{__('global.author')}}</th>
                                 <th>{{__('global.update_at')}}</th>
                                 <th>{{__('global.categories')}}</th>
-                                <th>{{__('courses::global.classes')}}</th>
                                 <th colspan="3">{{__('global.action')}}</th>
                             </tr>
                         </thead>
@@ -45,7 +44,6 @@
                                     <a href="{{ route('category.show', $category->id ) }}">{{$category->name}}</a>
                                     @endforeach
                                 </td>
-                                <td><a href="{{ route('course.section', $course->id) }}" class="btn btn-dark btn-sm"><i class="fas fa-folder-open"></i></a></td>
                                 <td>
                                     <form method="POST" action="{!! route('courses.destroy', $course->id) !!}" accept-charset="UTF-8">
                                         <input name="_method" value="DELETE" type="hidden">
@@ -60,6 +58,9 @@
                                             <button type="submit" class="btn btn-danger btn-sm" title="Delete Page" onclick="return confirm(&quot;Click Ok to delete Course.&quot;)">
                                                 <i class="fas fa-trash"></i>
                                             </button>
+                                            <a href="{{ route('course.view', $course->slug) }}" class="btn btn-success btn-sm" title="Edit Page">
+                                                <i class="fas fa-play"></i>
+                                            </a>
                                         </div>
                                     </form>
                                 </td>

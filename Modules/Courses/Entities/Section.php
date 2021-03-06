@@ -30,4 +30,9 @@ class Section extends Model
     {
         return $this->belongsTo(Course::class, 'course_id');
     }
+
+    public function classes()
+    {
+        return $this->hasMany(Classe::class)->orderBy('order');
+    }
 }

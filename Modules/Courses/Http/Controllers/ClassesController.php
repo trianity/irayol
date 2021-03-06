@@ -2,9 +2,12 @@
 
 namespace Modules\Courses\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Courses\Entities\Classe;
+use Illuminate\Contracts\Support\Renderable;
+use Modules\Courses\Http\Requests\CreateClassRequest;
 
 class ClassesController extends Controller
 {
@@ -31,9 +34,26 @@ class ClassesController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(CreateClassRequest $request)
     {
-        dd($request->all());
+        try {            
+            $class = Classe::updateOrCreate(
+                ['id' => $request->class_id],
+                [
+                    'title' => $request->title_class,
+                    'section_id' => $request->section_class_id,
+                    'is_active' => $request->is_active,
+                    'media_type' => $request->media_type,
+                    'url' => $request->url,
+                    'duration' => $request->duration,
+                    'access' => $request->access,
+                    'note' => $request->note,
+                ]
+            );
+            return response()->json(['status' => 'success', 'message' =>  $class]);
+        } catch (\Throwable $th) {
+            return response()->json(['status' => 'danger', 'message' => $th->getMessage()]);
+        }
     }
 
     /**
@@ -53,7 +73,8 @@ class ClassesController extends Controller
      */
     public function edit($id)
     {
-        return view('courses::edit');
+        $section  = Classe::where('id', $id)->first();
+        return response()->json(['status' => 'success', 'message' =>  $section]);
     }
 
     /**
@@ -74,6 +95,24 @@ class ClassesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Classe::where('id', $id)->delete();
+            return response()->json(['status' => 'warning', 'message' =>  __('courses::global.successfully_destroy')]);
+        } catch (\Throwable $e) {
+            return response()->json(['status' => 'danger', 'message' => $e->getMessage()]);
+        }
+    }
+
+    public function order(Request $request)
+    {
+        try {
+            foreach($request->get('order') as $id => $order) {
+                Classe::find($id)->update(['order' => $order]);
+            }
+            return response()->json(['status' => 'success', 'message' => __('courses::global.successfully_updated')]);
+        } catch (\Throwable $th) {
+            return response()->json(['status' => 'danger', 'message' => $th->getMessage()]);
+        }
+
     }
 }

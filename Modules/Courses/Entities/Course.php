@@ -51,4 +51,9 @@ class Course extends Model
     {
         return $this->belongsTo(User::class, 'instructor_id');
     }
+
+    public function sectios()
+    {
+        return $this->hasMany(Section::class);
+    }
 }

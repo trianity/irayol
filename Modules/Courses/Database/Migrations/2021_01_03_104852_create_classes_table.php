@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,8 +17,7 @@ class CreateClassesTable extends Migration
             $table->id();
             $table->bigInteger('section_id')->unsigned();
             $table->string('title');
-            $table->string('slug')->unique();
-            $table->string('notes');
+            $table->string('note');
             $table->string('media_type')->nullable()->default('video')->comment('video, audio, document, text');
             $table->string('url')->nullable();
             $table->integer('order')->default(0);

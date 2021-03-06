@@ -5,10 +5,15 @@ return [
     'course' => 'Curso',
 
     'new_section' => 'Nueva sección',
+    'new_class' => 'Nueva clase',
     'sections' => 'Secciones',
     'section' => 'Sección',
 
     'select_option' => 'Seleccione una opción',
+    'select_section' => 'Seleccione una sección',
+    'choose_an_option' => 'Elija una opción',
+    'access' => 'Tipo de acceso',
+    'media_type' => 'Archivo multimedia',
 
     'categories' => 'Categorías',
     'category' => 'Categoría',
@@ -60,10 +65,23 @@ return [
     'pay' => 'Pagado',
     'free' => 'Gratuito',
 
+    'is_active' => 'Estado de la clase',
+    'yes' => 'Clase activa',
+    'no' => 'Clase inactiva',
+
+    'video' => 'Vídeo',
+    'audio' => 'Audio',
+    'document' => 'Documento',
+    'text' => 'Texto ',
+
     'choose_file' => 'Elija un archivo',
     'upload' => 'Subir',
 
     'successfully_added' => 'El registro fue agregado con éxito.',
     'successfully_updated' => 'El registro fue actualizado con éxito.',
-    'successfully_destroy' => 'El registro fue eliminado con éxito.'
+    'successfully_destroy' => 'El registro fue eliminado con éxito.',
+
+    'click_to_destroy' => '¿Estas seguro que deseas eliminar el registro?',
+
+    'go_to_course' => 'Ir al curso',
 ];

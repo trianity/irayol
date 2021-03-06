@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Courses\Entities\Classe;
 use Modules\Courses\Entities\Course;
 use Modules\Courses\Entities\Section;
 
@@ -43,7 +44,7 @@ class CoursesController extends Controller
     {
         try {
             $course = Course::create([
-                'instructor_id' => $request->user()->id,
+                'instructor_id' => auth()->user()->id,
                 'title' => $request->title,
                 'level' => $request->level,
                 'slug' => Str::slug($request->title),
@@ -70,7 +71,9 @@ class CoursesController extends Controller
      */
     public function show($id)
     {
-        return view('courses::courses.show');
+        $course = Course::findOrFail($id);
+        $sections = Section::where('course_id', $course->id)->get();
+        return view('courses::courses.show', compact('course', 'sections'));
     }
 
     /**
@@ -130,10 +133,34 @@ class CoursesController extends Controller
         }
     }
 
-    public function section($id)
-    {
-        $course = Course::findOrFail($id);
-        $sections = Section::where('course_id', $course->id)->get();
-        return view('courses::sections.index', compact('course', 'sections'));
+    public function all(){
+        try {
+            $courses = Course::paginate();
+            return view('courses::courses.all', compact('courses'));
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('danger', "Error: " . $th->getMessage());
+        }
+    }
+
+    public function course($slug){
+        try {
+            $course = Course::where('slug', $slug)->first();
+            $sections = Section::where('course_id', $course->id)->get();
+            return view('courses::courses.info', compact('course', 'sections'));
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('danger', "Error: " . $th->getMessage());
+        }
+        
+    }
+
+    public function play($slug, $id){
+        try {
+            $course = Course::where('slug', $slug)->first();
+            $sections = Section::where('course_id', $course->id)->get();
+            $classe = Classe::where('id', $id)->first();
+            return view('courses::courses.play', compact('course', 'sections', 'classe'));
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('danger', "Error: " . $th->getMessage());
+        }
     }
 }
