@@ -2,40 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9587c8c2-5dab-420f-bef2-16b963f68f16" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/irayol.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/irayol.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Courses/Database/Migrations/2021_01_03_104715_create_sections_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Courses/Database/Migrations/2021_01_03_104715_create_sections_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Courses/Database/Migrations/2021_01_03_104852_create_classes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Courses/Database/Migrations/2021_01_03_104852_create_classes_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Courses/Entities/Classe.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Courses/Entities/Classe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Courses/Entities/Course.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Courses/Entities/Course.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Courses/Entities/Section.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Courses/Entities/Section.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Courses/Http/Controllers/ClassesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Courses/Http/Controllers/ClassesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Courses/Http/Controllers/CoursesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Courses/Http/Controllers/CoursesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Courses/Http/Controllers/SectionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Courses/Http/Controllers/SectionsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Courses/Resources/lang/es/global.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Courses/Resources/lang/es/global.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Courses/Resources/views/classes/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Courses/Resources/views/courses/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Courses/Resources/views/courses/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Courses/Resources/views/courses/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Courses/Resources/views/courses/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Courses/Resources/views/sections/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Courses/Resources/views/courses/play.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Courses/Resources/views/courses/play.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Modules/Courses/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Courses/Routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Helpers/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FrontendController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FrontendController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manager/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/manager/js/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manager/menu/nestable/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/manager/menu/nestable/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manager/menu/nestable/nestable.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/manager/menu/nestable/nestable.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/modules/courses/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/modules/courses/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/livewire/livewire.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/livewire/livewire.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/livewire/livewire.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/livewire/livewire.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/vendor/livewire/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/livewire/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/es/global.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/es/global.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/themes/default/partials/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/themes/default/partials/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/themes/knight/partials/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/themes/knight/partials/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/media.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/media.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +177,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -248,6 +221,7 @@
       <workItem from="1614315106063" duration="1199000" />
       <workItem from="1614705601616" duration="3144000" />
       <workItem from="1614913973314" duration="1969000" />
+      <workItem from="1615301688632" duration="2812000" />
     </task>
     <servers />
   </component>
