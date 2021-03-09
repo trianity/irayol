@@ -23,7 +23,7 @@ class Classe extends Model
         'access',
         'is_active'
     ];
-    
+
     protected static function newFactory()
     {
         return \Modules\Courses\Database\factories\ClasseFactory::new();
@@ -39,8 +39,8 @@ class Classe extends Model
         return $this->hasMany(UserClase::class, 'class_id', 'id');
     }
 
-    public function checkViewed($user_id){        
-        if ($this->viewClass()->where('user_id', $user_id)->first()){
+    public function checkUserViewed(){
+        if ($this->viewClass()->where('user_id', auth()->user()->id)->first()){
             return true;
         }else{
             return false;

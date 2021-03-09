@@ -35,7 +35,7 @@
                                 </button>
                             </h2>
                         </div>
-    
+
                         <div id="collapse_{{$section->id}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion_{{$section->id}}">
                             <div class="card-body">
                                 <ul class="list-group">
@@ -46,15 +46,15 @@
                                                     {{$class->title}}
                                                 </div>
                                                 <div id="viewed_user_class_{{$class->id}}">
-                               
+
                                                     <a href="javascript:void(0)" id="viewedClass" data-id="{{ $class->id }}" class="btn btn-info btn-sm">
-                                                        @if (count($class->viewClass) > 0)
-                                                        <i class="fas fa-eye"></i> 
+                                                        @if ($class->checkUserViewed())
+                                                            <i class="fas fa-eye"></i>
                                                         @else
-                                                        <i class="far fa-eye-slash"></i>
+                                                            <i class="far fa-eye-slash"></i>
                                                         @endif
                                                     </a>
-                                                    
+
                                                     <a href="{{route('course.play', [$course->slug, $class->id])}}" class="btn btn-success btn-sm"><i class="fas fa-play"></i></a>
                                                 </div>
                                             </div>
