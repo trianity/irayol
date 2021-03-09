@@ -2,11 +2,11 @@
 
 namespace Modules\Courses\Http\Controllers;
 
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Courses\Entities\Classe;
 use Illuminate\Contracts\Support\Renderable;
+use Modules\Courses\Entities\UserClase;
 use Modules\Courses\Http\Requests\CreateClassRequest;
 
 class ClassesController extends Controller
@@ -114,5 +114,33 @@ class ClassesController extends Controller
             return response()->json(['status' => 'danger', 'message' => $th->getMessage()]);
         }
 
+    }
+
+    public function viewed(Request $request)
+    {
+        try {
+            $user_id = auth()->user()->id;
+            $class = Classe::findOrFail($request->class_id);
+    
+            if ($class) {
+                $classViewedUser = UserClase::where([['user_id', $user_id], ['class_id', $class->id]])->first();
+                if ($classViewedUser) {
+                    if ($classViewedUser->user_id == $user_id) {
+                        $classViewedUser->delete();
+                        return response()->json(['status' => 'info', 'message' => __('courses::global.successfully_updated')]);
+                    }
+                } else {
+                    $class_viewed_user = new UserClase();
+                    $class_viewed_user->user_id = $user_id;
+                    $class_viewed_user->class_id = $class->id;
+                    $class_viewed_user->save();
+    
+                    return response()->json(['status' => 'success', 'message' =>  __('courses::global.successfully_added')]);
+                }            
+            }  
+        } catch (\Throwable $th) {
+            return response()->json(['status' => 'danger', 'message' => $th->getMessage()]);
+        }
+   
     }
 }
