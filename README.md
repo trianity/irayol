@@ -32,7 +32,7 @@ php artisan db:seed
 http://127.0.0.1:8000
 ```
 ```
-User: admin@mail.com
+User: admin@admin.com
 Pass: 123456
 ```
 
