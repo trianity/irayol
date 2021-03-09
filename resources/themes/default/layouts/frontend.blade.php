@@ -45,6 +45,7 @@
     <script src="{{ asset('themes/' . setting('theme_active') . '/js/app.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script src="{{ asset('themes/' . setting('theme_active') . '/js/custom.js') }}" type="text/javascript"></script>
+    @stack('js')
 </body>
 
 </html>
