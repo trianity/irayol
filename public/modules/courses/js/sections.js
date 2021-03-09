@@ -16,7 +16,7 @@ $(document).ready(function () {
     /* When click edit section */
     $("body").on("click", "#edit-section", function () {
         let section_id = $(this).data("id");
-        $.get("/admin/sections/" + section_id + "/edit", function (data) {
+        $.get("/sections/" + section_id + "/edit", function (data) {
             $("#sectionModal").html("Edit Section");
             $("#btn-save").val("edit-section");
             $("#section-modal").modal("show");
@@ -43,7 +43,7 @@ $(document).ready(function () {
             function (e) {
                 if (e.value === true) {
                     $.ajax({
-                        url: "/admin/sections/" + section_id,
+                        url: "/sections/" + section_id,
                         type: "DELETE",
                         success: function (data) {
                             $("#card_section_" + section_id).remove();
@@ -74,7 +74,7 @@ if ($("#sectionForm").length > 0) {
 
             $.ajax({
                 data: $("#sectionForm").serialize(),
-                url: "/admin/sections",
+                url: "/sections",
                 type: "POST",
                 dataType: "json",
                 success: function (data) {

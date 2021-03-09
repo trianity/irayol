@@ -17,7 +17,7 @@ $(document).ready(function () {
     /* When click edit section */
     $("body").on("click", "#edit-class", function () {
         let class_id = $(this).data("id");
-        $.get("/admin/classes/" + class_id + "/edit", function (data) {
+        $.get("/classes/" + class_id + "/edit", function (data) {
             $("#classesModal").html("Edit Class");
             $("#btn-save").val("edit-class");
             $("#classes-modal").modal("show");
@@ -52,7 +52,7 @@ $(document).ready(function () {
             function (e) {
                 if (e.value === true) {
                     $.ajax({
-                        url: "/admin/classes/" + class_id,
+                        url: "/classes/" + class_id,
                         type: "DELETE",
                         success: function (data) {
                             $("#card_class_" + class_id).remove();
@@ -82,9 +82,9 @@ if ($("#classForm").length > 0) {
             $("#btn_save").html("Enviando...");
 
             $.ajax({
-                data: $("#classForm").serialize(),
-                url: "/admin/classes",
+                url: "/classes",
                 type: "POST",
+                data: $("#classForm").serialize(),
                 dataType: "json",
                 success: function (data) {
 
@@ -135,7 +135,7 @@ $('.sortabe').sortable({
             });
 
             $.ajax({
-                url: '/admin/classes/order',
+                url: '/classes/order',
                 type: 'POST',
                 data: {order: order},
                 success: function(data){
