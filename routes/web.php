@@ -14,21 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'setTheme'], function () {
-    Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('home');
-    Route::get('/blog/{slug}', [App\Http\Controllers\FrontendController::class, 'showblog'])->name('blog.show'); //show the blog page
-    Route::get('/{slug}', [App\Http\Controllers\FrontendController::class, 'showpage'])->name('page.show'); //show the page
-    Route::get('/category/{slug}', [App\Http\Controllers\FrontendController::class, 'category'])->name('site.category');
-    Route::get('/page/{slug}', [App\Http\Controllers\FrontendController::class, 'page'])->name('site.page');
-    Route::get('/post/{slug}', [App\Http\Controllers\FrontendController::class, 'post'])->name('site.post');
-});
+Auth::routes();
 
-Route::group(['prefix' => 'admin'], function () {
-    //route Auth
-    Auth::routes(['register' => false]);
-});
-
-Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth']], function () {
 
     // Change languaje
     Route::get('lang/{lang}', [App\Http\Controllers\HomeController::class, 'swap'])->name('lang.swap');
@@ -94,4 +82,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     // Roles
     Route::resource('roles', \App\Http\Controllers\RolesController::class);
     Route::post('roles_mass_destroy', [App\Http\Controllers\RolesController::class, 'massDestroy'])->name('roles.mass_destroy');
+});
+
+Route::group(['middleware' => 'setTheme'], function () {
+    Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('home');
+    Route::get('/blog/{slug}', [App\Http\Controllers\FrontendController::class, 'showblog'])->name('blog.show'); //show the blog page
+    Route::get('/page/{slug}', [App\Http\Controllers\FrontendController::class, 'showpage'])->name('page.show'); //show the page
+    Route::get('/category/{slug}', [App\Http\Controllers\FrontendController::class, 'category'])->name('site.category');
+    Route::get('/page/{slug}', [App\Http\Controllers\FrontendController::class, 'page'])->name('site.page');
+    Route::get('/post/{slug}', [App\Http\Controllers\FrontendController::class, 'post'])->name('site.post');
 });
