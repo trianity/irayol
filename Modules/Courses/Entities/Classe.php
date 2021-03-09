@@ -33,4 +33,17 @@ class Classe extends Model
     {
         return $this->belongsTo(Section::class);
     }
+
+    public function viewClass()
+    {
+        return $this->hasMany(UserClase::class, 'class_id', 'id');
+    }
+
+    public function checkViewed($user_id){        
+        if ($this->viewClass()->where('user_id', $user_id)->first()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
