@@ -9,6 +9,13 @@ class UserClase extends Model
 {
     use HasFactory;
 
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'user_class';
+
     protected $fillable = [];
     
     protected static function newFactory()
