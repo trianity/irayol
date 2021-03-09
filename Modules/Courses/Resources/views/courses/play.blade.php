@@ -42,12 +42,21 @@
                                     @foreach($section->classes as $class)
                                         <li class="list-group-item">
                                             <div class="d-flex justify-content-between">
-                                                {{$class->title}}
-                                                @if ($class->access == 'free')
+                                                <div>
+                                                    {{$class->title}}
+                                                </div>
+                                                <div id="viewed_user_class_{{$class->id}}">
+                               
+                                                    <a href="javascript:void(0)" id="viewedClass" data-id="{{ $class->id }}" class="btn btn-info btn-sm">
+                                                        @if (count($class->viewClass) > 0)
+                                                        <i class="fas fa-eye"></i> 
+                                                        @else
+                                                        <i class="far fa-eye-slash"></i>
+                                                        @endif
+                                                    </a>
+                                                    
                                                     <a href="{{route('course.play', [$course->slug, $class->id])}}" class="btn btn-success btn-sm"><i class="fas fa-play"></i></a>
-                                                @else
-                                                    <a href="#!" class="btn btn-primary btn-sm disable"><i class="fas fa-lock"></i></a>
-                                                @endif
+                                                </div>
                                             </div>
                                         </li>
                                     @endforeach
@@ -62,3 +71,7 @@
     </div>
 </div>
 @endsection
+
+@push('js')
+    <script src="{{asset('modules/courses/js/class_play.js')}}"></script>
+@endpush

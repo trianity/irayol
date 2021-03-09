@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('content')
-<div class="container mt-2">
+<div class="container mt-3 mb-3">
     <div class="row row-cols-1 row-cols-md-3">
         @foreach ($courses as $course)
             <div class="col mb-4 mt-3">
