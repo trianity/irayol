@@ -17,10 +17,8 @@ class CreateUserClassTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('class_id')->unsigned();
-            $table->string('status')->default('incomplete')->comment('watching, complete, incomplete');
-
             $table->timestamps();
-
+            
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
         });
