@@ -84,4 +84,6 @@ return [
     'click_to_destroy' => '¿Estas seguro que deseas eliminar el registro?',
 
     'go_to_course' => 'Ir al curso',
+    'not_viewed' => 'No visto',
+    'is_viewed' => 'Visto',
 ];
