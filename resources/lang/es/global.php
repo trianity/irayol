@@ -153,5 +153,12 @@ return [
 	'not_found' => 'No encontrado',
 	'are_you_sure?' => '¿Estas seguro?',
 	'it_will_be_deleted_permanently' => '¡Será eliminado permanentemente!',
-	'something_went_wrong_with_ajax' => 'Algo salió mal con ajax'
+	'something_went_wrong_with_ajax' => 'Algo salió mal con ajax',
+
+	'successfully_added' => 'El registro fue agregado con éxito.',
+    'successfully_updated' => 'El registro fue actualizado con éxito.',
+    'successfully_destroy' => 'El registro fue eliminado con éxito.',
+
+	'successfully_added_addons' => 'El modulo :module fue agregado con éxito.',
+	'successfully_destroy_addons' => 'El modulo :module fue eliminado con éxito.',
 ];
