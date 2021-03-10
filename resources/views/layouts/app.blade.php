@@ -31,6 +31,7 @@
             <div class="content-wrapper">
                 <div class="content-header">
                     <div class="container-fluid">
+                        @include('layouts.partials.alert')
                         @yield('content')
                     </div>
                 </div>

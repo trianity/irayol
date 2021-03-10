@@ -1,17 +1,6 @@
 @extends('layouts.app')
 @push('title', 'Category') 
 @section('content')
-    @if(Session::has('success_message'))
-        <div class="alert alert-success">
-            <i class="fas fa-check-circle"></i>
-            {!! session('success_message') !!}
-
-            <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-
-        </div>
-    @endif
     <div class="card">
         <div class="card-header clearfix">
             <div class="float-left">

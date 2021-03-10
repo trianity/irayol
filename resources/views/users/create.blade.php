@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @push('title', 'Create User')
 @section('content')
-
     <div class="card mt-3">
 
         <div class="card-header clearfix">

@@ -3,16 +3,6 @@
 
 @section('content')
 
-@if(Session::has('success'))
-    <div class="alert alert-success">
-        <i class="fa fa-check-circle" aria-hidden="true"></i>
-        {!! session('success') !!}
-        <button type="button" class="close" data-dismiss="alert" aria-label="close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-@endif
-
 <div class="card">
 	<div class="card-header container-fluid">
         <div class="row">
@@ -29,7 +19,6 @@
         </div>
 	</div>
 	<div class="card-body">
-
             <div id="item" class="collapse">
                 <form method="get" action="{{route('page.index')}}">
                     <div class="form-group">

@@ -1,7 +1,6 @@
 @extends('layouts.app') 
 @push('title', 'Add Page') 
 @section('content')
-<div class="container">
     <form action="{{route('page.store')}}" method="POST" class="">
         @csrf
         <div class="row">
@@ -65,7 +64,7 @@
             </div>
         </div>
     </form>
-</div>
+
 
 <!--Modal-->
 <div class="modal fade" id="MediaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

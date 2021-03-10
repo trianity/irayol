@@ -39,9 +39,7 @@
             <dd>{{ $category->description }}</dd>
             <dt>{{__('global.status')}}</dt>
             <dd>{{ ($category->is_active) ? __('global.active') : __('global.inactive') }}</dd>
-
         </dl>
-
     </div>
 </div>
 

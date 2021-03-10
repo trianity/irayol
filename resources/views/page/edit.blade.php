@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @push('title', 'Edit Page')
 @section('content')
-<div class="container">
     <form action="{{route('page.update', $page->id) }}" method="POST">
         @method('PUT')
         @csrf
@@ -101,7 +100,7 @@
             </div>
         </div>
     </form>
-</div>
+
 
 <!--Modal-->
 <div class="modal fade" id="MediaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

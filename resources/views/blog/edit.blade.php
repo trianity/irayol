@@ -1,14 +1,7 @@
 @extends('layouts.app') 
 @push('title', 'Edit Blog') 
 @section('content')
-<div class="container mt-4">
-    @if ($errors->any())
-        <ul class="alert alert-danger mt-4">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+
     <form action="{{ route('blog.update', $blog->id ) }}" method="POST" class="">
         <div class="row">
             <div class="col-md-8">
@@ -144,7 +137,6 @@
             </div>
         </div>
     </form>
-</div>
 
 <!--Post Image Modal-->
 <div class="modal fade" id="MediaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

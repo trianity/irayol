@@ -1,7 +1,7 @@
 @extends('layouts.app') 
 @push('title', 'Welcome to dashboard!') 
 @section('content')
-<div class="container">
+
     <div class="row">        
         <div class="col-12 col-sm-6 col-md">
             <a href="{{route('page.index')}}">
@@ -69,5 +69,5 @@
         <h1>{{ __('global.welcome') }} </h1>
     </div>
 
-</div>
+
 @endsection
