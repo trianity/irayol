@@ -11,18 +11,18 @@ function module_enabled($alias)
 function menuUrl($menu)
 {
     if ($menu->source == 'custom') :
-        return $menu->url ?? '#';
+        return $menu->url ?? '#!';
 
-    elseif ($menu->source   == 'category') :
+    elseif ($menu->source == 'category') :
         return route('site.category', ['slug' => $menu->category->slug]);
 
-    elseif ($menu->source   == 'page') :
+    elseif ($menu->source == 'page') :
 
-        return route('site.page', ['slug' => $menu->page->slug]);
+        return route('page.show', ['slug' => $menu->page->slug]);
 
-    elseif ($menu->source   == 'post') :
+    elseif ($menu->source == 'post') :
 
-        return route('site.post', ['id' => $menu->post->slug]);
+        return route('blog.show', ['id' => $menu->post->slug]);
 
     endif;
 }
