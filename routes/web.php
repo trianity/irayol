@@ -89,6 +89,4 @@ Route::group(['middleware' => 'setTheme'], function () {
     Route::get('/blog/{slug}', [App\Http\Controllers\FrontendController::class, 'showblog'])->name('blog.show'); //show the blog page
     Route::get('/page/{slug}', [App\Http\Controllers\FrontendController::class, 'showpage'])->name('page.show'); //show the page
     Route::get('/category/{slug}', [App\Http\Controllers\FrontendController::class, 'category'])->name('site.category');
-    Route::get('/page/{slug}', [App\Http\Controllers\FrontendController::class, 'page'])->name('site.page');
-    Route::get('/post/{slug}', [App\Http\Controllers\FrontendController::class, 'post'])->name('site.post');
 });
