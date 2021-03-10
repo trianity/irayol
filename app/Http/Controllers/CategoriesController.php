@@ -70,7 +70,7 @@ class CategoriesController extends Controller
                 'description' => $request->description,
                 'is_active' => $request->is_active,
             ]);
-            return redirect()->route('category.index')->with('success', 'Category was successfully added.');
+            return redirect()->route('category.index')->with('success', __('global.successfully_added'));
         } catch (\Exception $e) {
             return redirect()->back()->with('danger', "Error: " . $e->getMessage());
         }
@@ -123,12 +123,9 @@ class CategoriesController extends Controller
                 'is_active' => $request->is_active,
             ]);
 
-            return redirect()->route('category.index')
-                ->with('success_message', 'Category was successfully updated.');
-        } catch (Exception $exception) {
-
-            return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+            return redirect()->route('category.index')->with('success', __('global.successfully_updated'));
+        } catch (\Exception $e) {
+            return redirect()->route('addons.index')->with('danger', "Error: ". $e->getMessage());
         }
     }
 
@@ -145,12 +142,9 @@ class CategoriesController extends Controller
             $category = Category::findOrFail($id);
             $category->delete();
 
-            return redirect()->route('category.index')
-                ->with('success_message', 'Category was successfully deleted.');
-        } catch (Exception $exception) {
-
-            return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+            return redirect()->route('category.index')->with('warning', __('global.successfully_destroy'));
+        } catch (\Exception $e) {
+            return redirect()->route('addons.index')->with('danger', "Error: ". $e->getMessage());
         }
     }
 

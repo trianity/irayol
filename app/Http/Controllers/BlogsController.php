@@ -90,8 +90,7 @@ class BlogsController extends Controller
             $blog->categories()->attach($request->category);
 
             if ($save) {
-                $request->session()->flash('success', 'Successfully saved!');
-                return redirect()->action('HomeController@blog');
+                return redirect()->action('HomeController@blog')->with('success', __('global.successfully_added'));
             }
         } else {
             return redirect()->route('blog.create')
@@ -119,10 +118,11 @@ class BlogsController extends Controller
      */
     public function edit($id)
     {
-        $media = Media::all(); //add medai upload
+        $media = Media::all();
         $categories = Category::where('is_active', 1)->get()->pluck('name', 'id');
         $users = User::all()->pluck('name', 'id');
         $blog = Blog::find($id);
+
         if (!$blog) {
             abort(404);
         }
@@ -161,8 +161,7 @@ class BlogsController extends Controller
             $blog->categories()->sync($request->category);
 
             if ($save) {
-                $request->session()->flash('success', 'Successfully saved!');
-                return redirect()->route('blog.index');
+                return redirect()->route('blog.index')->with('success', __('global.successfully_updated'));
             }
         } else {
             return redirect()->route('blog.edit', $id)->withErrors($validator)->withInput();
@@ -180,7 +179,7 @@ class BlogsController extends Controller
         $blog = Blog::find($id);
         $delete = $blog->delete();
         if ($delete) {
-            return redirect()->route('blog.index')->with('success', 'Successfully deleted the blog!');
+            return redirect()->route('blog.index')->with('warning', __('global.successfully_destroy'));
         }
     }
 }

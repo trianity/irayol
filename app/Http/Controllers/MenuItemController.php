@@ -75,7 +75,7 @@ class MenuItemController extends Controller
         endforeach;
 
         $data['status']     = "success";
-        $data['message']    = __('successfully_update_menu_arrangement');
+        $data['message']    = __('global.successfully_updated');
 
         echo json_encode($data);
     }

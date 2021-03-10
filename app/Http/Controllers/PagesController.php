@@ -80,8 +80,7 @@ class PagesController extends Controller
             $page->keywordseo = $request->keywordseo;
             $save = $page->save();
             if ($save) {
-                $request->session()->flash('success', 'Successfully saved!');
-                return redirect()->action('HomeController@page');
+                return redirect()->action('HomeController@page')->with('success', __('global.successfully_added'));
             }
         } else {
             return redirect()->route('page.create')->withErrors($validator)->withInput();
@@ -140,8 +139,7 @@ class PagesController extends Controller
             $page->keywordseo = $request->keywordseo;
             $save = $page->save();
             if ($save) {
-                $request->session()->flash('success', 'Successfully saved!');
-                return redirect()->route('page.index');
+                return redirect()->route('page.index')->with('success', __('global.successfully_updated'));
             }
         } else {
             return redirect()->route('route.edit', $id)->withErrors($validator)->withInput();
@@ -159,7 +157,7 @@ class PagesController extends Controller
         $page = Page::find($id);
         $delete = $page->delete();
         if ($delete) {
-            return redirect()->action('HomeController@page')->with('success', 'Successfully deleted the page!');
+            return redirect()->action('HomeController@page')->with('warning', __('global.successfully_destroy'));
         }
     }
 
@@ -170,9 +168,9 @@ class PagesController extends Controller
             } else {
                 setting(['main_page' => $request->main_page])->save();
             }
-            return redirect()->back()->with('success', 'Page main was successfully change.');
-        } catch (\Exception $exception) {
-            return back()->withInput()->withErrors(['danger' => 'Unexpected error occurred while trying to process your request.']);
+            return redirect()->back()->with('success', __('global.successfully_updated'));
+        } catch (\Exception $e) {
+            return redirect()->route('addons.index')->with('danger', "Error: ". $e->getMessage());
         }
     }
 }

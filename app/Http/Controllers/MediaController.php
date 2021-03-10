@@ -136,7 +136,7 @@ class MediaController extends Controller
             $delete = $media->delete();
 
             if ($delete) {
-                return redirect()->back()->with('success', 'Successfully deleted!');
+                return redirect()->back()->with('warning', __('global.successfully_destroy'));
             }
         } catch (\Exception $e){
             return redirect()->back('media.index')->with('danger', "Error: ". $e->getMessage());

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use File;
+use Module;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Module;
-use File;
 use Madnest\Madzipper\Facades\Madzipper;
 
 class AddonsController extends Controller
@@ -72,11 +72,12 @@ class AddonsController extends Controller
             $addon_name = pathinfo(Madzipper::make($request->file('addon'))->listFiles('/\module.json/i')[0], PATHINFO_DIRNAME);
             $addon_info = json_decode(Madzipper::make($request->file('addon'))->getFileContent($addon_name.'/module.json'));
             Madzipper::make($request->file('addon'))->folder($addon_name)->extractTo(base_path('Modules/' . $addon_name));
-            $request->session()->flash('success', "Successfully added $addon_name addon");
+
+            return redirect()->route('addons.index')->with('success', __('global.successfully_added_addons', ['module' => $addon_name]));
         } catch (\Exception $e) {
             return redirect()->route('addons.index')->with('danger', "Error: ". $e->getMessage());
         }
-        return redirect()->route('addons.index');
+        
     }
 
     /**
@@ -92,15 +93,9 @@ class AddonsController extends Controller
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit($id, FormBuilder $formBuilder)
+    public function edit($id)
     {
-        $page = PageTranslation::findOrFail($id);
-        $form = $formBuilder->create('Modules\Panel\Forms\PageForm', [
-            'method' => 'PUT',
-            'url' => route('panel.pages.update', $id),
-            'model' => $page
-        ]);
-        return view('panel::pages.create', compact('form'));
+
     }
 
     /**
@@ -110,12 +105,7 @@ class AddonsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $page = PageTranslation::findOrFail($id);
-        $page->fill($request->all());
-        $page->save();
 
-        alert()->success('Successfully saved');
-        return redirect()->route('panel.pages.index', ['locale' => $page->locale]);
     }
 
     /**
@@ -126,7 +116,7 @@ class AddonsController extends Controller
     {
         try {
             File::deleteDirectory(base_path('Modules/' . $addon_name));
-            return redirect()->route('addons.index')->with('warning', "Successfully delete $addon_name addons");
+            return redirect()->route('addons.index')->with('warning', __('global.successfully_destroy_addons', ['module' => $addon_name]));
         } catch (\Exception $e) {
             return redirect()->route('addons.index')->with('danger', "Error: " . $e->getMessage());
         }

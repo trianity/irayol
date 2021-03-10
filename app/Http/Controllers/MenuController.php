@@ -31,7 +31,7 @@ class MenuController extends Controller
         $menu->remark = $request->remark;
         $menu->save();
 
-        return redirect()->back()->with('success', 'Successfully created!');
+        return redirect()->back()->with('success', __('global.successfully_added'));
     }
 
     public function edit($id)
@@ -57,7 +57,7 @@ class MenuController extends Controller
         $menu->remark = $request->remark;
         $menu->save();
 
-        return redirect()->back()->with('success', __('successfully_added'));
+        return redirect()->back()->with('success', __('global.successfully_updated'));
     }
 
     public function destroy(Menu $menu){
@@ -73,9 +73,9 @@ class MenuController extends Controller
                 setting(['main_menu' => $request->main_menu])->save();
             }
             
-            return redirect()->back()->with('success', 'Menu was successfully change.');
-        } catch (\Exception $exception) {
-            return back()->withInput()->withErrors(['danger' => 'Unexpected error occurred while trying to process your request.']);
+            return redirect()->back()->with('success', __('global.successfully_updated'));
+        } catch (\Exception $e) {
+            return redirect()->route('addons.index')->with('danger', "Error: ". $e->getMessage());
         }
     }
 
