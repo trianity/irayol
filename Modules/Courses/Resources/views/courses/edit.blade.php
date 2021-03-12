@@ -147,7 +147,7 @@
                     <div class="col-md-3 mt-3">
                         @if($media->extension == 'png' || $media->extension == 'jpg' || $media->extension == 'jpeg')
                         <a data-toggle="modal" data-target="#{{ $media->id }}">
-                            <img class="thumbnail img-fluid rounded lazy loading filter image addMainImage" alt="" data-src="{{ $media->path }}" />
+                            <img class="thumbnail img-fluid rounded filter image addMainImage" alt="" data-src="{{ $media->path }}" />
                         </a>
                         @endif
                     </div>
