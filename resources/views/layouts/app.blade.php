@@ -11,20 +11,14 @@
         <title>@stack('title')</title>
 
         <!-- Styles -->
-        <link href="{{ asset('manager/css/custom-style.css') }}" rel="stylesheet" />
-        <link href="{{ asset('manager/AdminLTE-3.0.5/dist/css/adminlte.css') }}" rel="stylesheet" />
-        <link href="{{ asset('manager/AdminLTE-3.0.5/dist/css/skin-midnight.css') }}" rel="stylesheet" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen" />
-        <link href="{{ asset('manager/css/select2.css') }}" rel="stylesheet" />
-        <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{{asset('manager/vendor/css/main.css')}}">
+
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700" rel="stylesheet">
         @stack('css')
         @livewireStyles
     </head>
-    <body class="hold-transition sidebar-mini layout-fixed">        
+    <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper" id="app">
             @include('layouts.partials.navbar')
 
@@ -46,23 +40,10 @@
 		</footer>
 
         <!-- Javascript -->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-        <script type="text/javascript" src="{{ asset('manager/AdminLTE-3.0.5/dist/js/adminlte.js') }}"></script>
-        
-        <!-- Sweetalert 2 -->
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-        <!-- Lazy load -->
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.6/jquery.lazy.min.js"></script>
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.6/jquery.lazy.plugins.min.js"></script>
-        
-        <script type="text/javascript" src="{{ asset('manager/js/custom.js')}}"></script>
+        <script type="text/javascript" src="{{asset('manager/vendor/js/main.js')}}"></script>
         <!-- Javascript -->
         @livewireScripts
-        
+
         @stack('js')
 
         <!-- Javascript -->

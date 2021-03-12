@@ -1,8 +1,12 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import "~admin-lte/build/scss/adminlte";
 
-// Variables
-@import 'variables';
+@import '~select2';
+@import "~flag-icon-css/sass/flag-icon";
+@import "~sweetalert2/src/sweetalert2";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import "~summernote/src/styles/summernote-bs4";
+@import "~tempusdominus-bootstrap-4/src/sass/tempusdominus-bootstrap-4-build";

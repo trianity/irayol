@@ -7,13 +7,6 @@
     margin-right: 5px;
 }
 
-.loading {
-    /* optional way, set loading as background */
-    background-image: url("https://loading.io/spinners/coolors/lg.palette-rotating-ring-loader.gif");
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-}
-
 .gallery {
     display: inline-block;
     margin-top: 20px;

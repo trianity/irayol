@@ -118,7 +118,7 @@
                     <div class="col-md-3 mt-3">
                         @if($medias->extension == 'png' || $medias->extension == 'jpg' || $medias->extension == 'jpeg')
                         <a data-toggle="modal" data-target="#{{ $medias->id }}">
-                            <img class="thumbnail img-fluid rounded lazy loading filter image addimage" alt="" data-src="{{ $medias->path }}" />
+                            <img class="thumbnail img-fluid rounded filter image addimage" alt="" data-src="{{ $medias->path }}" />
                         </a>
                         @endif
                     </div>
@@ -134,60 +134,4 @@
     </div>
 </div>
 <!--Modal-->
-
 @endsection
-
-@push('css')
-<link href="{{ asset('manager/plugins/summernote/summernote-bs4.min.css')}}" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css" />
-<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.css" />
-@endpush
-
-@push('js')
-<script src="{{ asset('manager/plugins/summernote/summernote-bs4.min.js')}}"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js"></script>
-<script>
-    $(document).ready(function () {
-        const FMButton = function (context) {
-            const ui = $.summernote.ui;
-            const button = ui.button({
-                contents: '<i class="note-icon-picture"></i> ',
-                tooltip: "File Manager",
-                click: function () {
-                    $("#MediaModal").modal("show");
-                },
-            });
-            return button.render();
-        };
-
-        $("#summernote").summernote({
-            height: 550,
-            dialogsInBody: true,
-            codemirror: {
-                // codemirror options
-                theme: "monokai",
-            },
-            callbacks: {
-                onInit: function () {
-                    $("body > .note-popover").hide();
-                },
-            },
-            toolbar: [
-                ["style", ["style"]],
-                ["font", ["bold", "underline", "clear"]],
-                ["fontname", ["fontname"]],
-                ["color", ["color"]],
-                ["para", ["ul", "ol", "paragraph"]],
-                ["table", ["table"]],
-                ["insert", ["link", "fm-button", ["fm"], "video"]],
-                ["view", ["fullscreen", "codeview", "help"]],
-            ],
-            buttons: {
-                fm: FMButton,
-            },
-        });
-    });
-</script>
-@endpush

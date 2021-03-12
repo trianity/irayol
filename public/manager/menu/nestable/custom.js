@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("li.dd-item").each(function (list) {
+    $("li .dd-item").each(function (list) {
         if ($(this).parents("ol").length === 1) {
             $(this).find("#mega-menu-area").show(500);
         } else {

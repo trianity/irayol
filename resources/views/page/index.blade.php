@@ -68,7 +68,7 @@
                             <td>
                                 <form action="{{route('page.active')}}" method="POST">
                                     @csrf
-                                    <input type="text" hidden name="main_page" id="main_page" value="{{ $page->id }}">
+                                    <input type="text" hidden value="{{ $page->id }}">
                                     <button type="submit" class="btn btn-{{ $page->id == setting('main_page') ? 'success' : 'secondary' }} btn-sm">{{ $page->id == setting('main_page') ? __('global.active') : __('global.inactive') }}</button>
                                 </form>
                             </td>

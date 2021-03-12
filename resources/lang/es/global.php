@@ -161,4 +161,7 @@ return [
 
 	'successfully_added_addons' => 'El modulo :module fue agregado con éxito.',
 	'successfully_destroy_addons' => 'El modulo :module fue eliminado con éxito.',
+
+	'successfully_added_theme' => 'El modulo :theme fue agregado con éxito.',
+	'successfully_destroy_theme' => 'El modulo :theme fue eliminado con éxito.',
 ];

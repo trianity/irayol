@@ -11,7 +11,17 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+
+    window.moment = require('moment');
+    window.datetimepicker = require('tempusdominus-bootstrap-4');
+    window.nestable = require('jquery-nestable');
+
 } catch (e) {}
+
+import 'select2';
+const Swal = window.Swal = require('sweetalert2');
+import 'admin-lte/build/js/AdminLTE';
+import 'summernote/dist/summernote-bs4';
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
