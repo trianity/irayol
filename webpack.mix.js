@@ -11,5 +11,14 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.js('resources/js/app.js', 'public/manager/vendor/js/init.js')
+    .sass('resources/sass/app.scss', 'public/manager/vendor/css/init.css')
+    .combine([
+    	'public/manager/vendor/js/init.js',
+      	'public/manager/js/custom-script.js',
+	], 'public/manager/vendor/js/main.js')
+  .combine([
+		'public/manager/vendor/css/init.css',
+		'public/manager/css/custom-style.css',
+		'public/manager/menu/nestable/nestable.css',
+	], 'public/manager/vendor/css/main.css');
