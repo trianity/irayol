@@ -54,9 +54,9 @@ class SettingsController extends Controller
         try {
             $data = $this->getData($request);
             Setting::create($data);
-            return redirect()->route('setting.index')->with('success_message', 'Setting was successfully added.');
-        } catch (Exception $exception) {
-            return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+            return redirect()->route('setting.index')->with('success', __('global.successfully_added'));
+        } catch (Exception $e) {
+            return redirect()->back()->with('danger', "Error: ". $e->getMessage());
         }
     }
 
@@ -84,8 +84,6 @@ class SettingsController extends Controller
     public function edit($id)
     {
         $setting = Setting::findOrFail($id);
-
-
         return view('settings.edit', compact('setting'));
     }
 
@@ -103,9 +101,9 @@ class SettingsController extends Controller
             $data = $this->getData($request);
             $setting = Setting::findOrFail($id);
             $setting->update($data);
-            return redirect()->route('setting.index')->with('success_message', 'Setting was successfully updated.');
-        } catch (Exception $exception) {
-            return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+            return redirect()->route('setting.index')->with('success', __('global.successfully_updated'));
+        } catch (Exception $e) {
+            return redirect()->back()->with('danger', "Error: ". $e->getMessage());
         }
     }
 
@@ -122,12 +120,9 @@ class SettingsController extends Controller
             $setting = Setting::findOrFail($id);
             $setting->delete();
 
-            return redirect()->route('setting.index')
-                ->with('success_message', 'Setting was successfully deleted.');
-        } catch (Exception $exception) {
-
-            return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+            return redirect()->route('setting.index')->with('warning', __('global.successfully_destroy'));
+        } catch (Exception $e) {
+            return redirect()->back()->with('danger', "Error: ". $e->getMessage());
         }
     }
 
@@ -144,10 +139,7 @@ class SettingsController extends Controller
             'key' => 'required|string|min:1|max:191',
             'value' => 'required|string|min:1|max:191|nullable'
         ];
-
         $data = $request->validate($rules);
-
-
         return $data;
     }
 

@@ -41,10 +41,10 @@ class ThemeController extends Controller
             if(Theme::exists($request->theme_name)){
                 Theme::set($request->theme_name);
                 setting(['theme_active' => $request->theme_name])->save();
-                return redirect()->back()->with('success_message', 'Theme was successfully change.');
+                return redirect()->back()->with('success', __('global.successfully_added'));
             }
-        } catch (Exception $exception) {
-            return back()->withInput()->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+        } catch (Exception $e) {
+            return redirect()->back()->with('danger', "Error: ". $e->getMessage());
         }
     }
 
@@ -80,7 +80,7 @@ class ThemeController extends Controller
             $themes = collect(json_decode(json_encode($themes->scanJsonFiles())));
             $zip->folder('asset/' . $theme_name)->extractTo(public_path('themes/' . $theme_name));
             $zip->folder('theme/' . $theme_name)->extractTo(resource_path('themes/' . $theme_name));
-            return redirect()->route('themes.index')->with('success', "Successfully added $theme_name theme");
+            return redirect()->route('themes.index')->with('success', __('global.successfully_added_theme', ['theme' => $theme_name]));
         } catch (\Exception $e) {
             return redirect()->route('themes.index')->with('danger', "Error: " . $e->getMessage());
         }
@@ -131,9 +131,9 @@ class ThemeController extends Controller
         try {
             File::deleteDirectory(public_path('themes/' . $theme_name));
             File::deleteDirectory(resource_path('themes/' . $theme_name));
-            return redirect()->route('themes.index')->with('warning', "Successfully delete $theme_name theme");
+            return redirect()->route('themes.index')->with('warning', __('global.successfully_destroy_theme', ['theme' => $theme_name]));
         } catch (\Exception $e) {
-            return redirect()->route('themes.index')->with('danger', "Error: " . $e->getMessage());
+            return redirect()->back()->with('danger', "Error: " . $e->getMessage());
         }
     }
 }

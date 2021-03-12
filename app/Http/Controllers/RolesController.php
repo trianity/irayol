@@ -55,7 +55,7 @@ class RolesController extends Controller
         $permissions = $request->input('permission') ? $request->input('permission') : [];
         $role->givePermissionTo($permissions);
 
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('success', __('global.successfully_added'));
     }
 
 
@@ -89,7 +89,7 @@ class RolesController extends Controller
         $permissions = $request->input('permission') ? $request->input('permission') : [];
         $role->syncPermissions($permissions);
 
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('success', __('global.successfully_updated'));
     }
 
 
@@ -104,7 +104,7 @@ class RolesController extends Controller
         $role = Role::findOrFail($id);
         $role->delete();
 
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('warning', __('global.successfully_destroy'));
     }
 
 }
