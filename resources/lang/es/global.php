@@ -16,6 +16,7 @@ return [
 		'created_at' => 'Fecha',
 		'fields' => [
 			'name' => 'Nombre',
+			'options' => 'Opciones',
 		],
 	],
 
@@ -24,7 +25,7 @@ return [
 		'created_at' => 'Fecha',
 		'fields' => [
 			'name' => 'Nombre',
-			'permission' => 'Permissions',
+			'permission' => 'Permisos',
 		],
 	],
 

@@ -5,12 +5,12 @@
 
     <div class="card mt-3">
         <div class="card-header">
-            @lang('global.app_create')
+            {{__('global.create')}}
         </div>
         
         <div class="card-body">
 
-            {!! Form::label('name', 'Name*', ['class' => 'control-label']) !!}
+            {!! Form::label('name', __('global.roles.fields.name'), ['class' => 'control-label']) !!}
             {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
             <p class="help-block"></p>
             @if($errors->has('name'))
@@ -19,7 +19,7 @@
                 </p>
             @endif
 
-            {!! Form::label('permission', 'Permissions', ['class' => 'control-label']) !!}
+            {!! Form::label('permission', __('global.roles.fields.permission'), ['class' => 'control-label']) !!}
             {!! Form::select('permission[]', $permissions, old('permission'), ['class' => 'form-control select2', 'multiple' => 'multiple']) !!}
             <p class="help-block"></p>
             @if($errors->has('permission'))
@@ -30,7 +30,7 @@
          
         </div>
         <div class="card-footer">
-            {!! Form::submit(trans('global.app_save'), ['class' => 'btn btn-success']) !!}
+            {!! Form::submit(__('global.save'), ['class' => 'btn btn-success']) !!}
         </div>
     </div>
 

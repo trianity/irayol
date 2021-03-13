@@ -2,7 +2,7 @@
 @push('title', 'Setting')
 @section('content')
 
-    <div class="card mt-3">
+    <div class="card">
         <div class="card-header container-fluid">
             <div class="row">
                 <div class="col-md-8">

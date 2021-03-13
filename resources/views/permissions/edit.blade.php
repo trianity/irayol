@@ -5,12 +5,12 @@
 
     <div class="card mt-3">
         <div class="card-header">
-            @lang('global.app_edit')
+            {{__('global.edit')}}
         </div>
 
         <div class="card-body">
 
-                    {!! Form::label('name', 'Name*', ['class' => 'control-label']) !!}
+                    {!! Form::label('name', __('global.roles.fields.name'), ['class' => 'control-label']) !!}
                     {!! Form::text('name', old('title'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('name'))
@@ -21,7 +21,7 @@
 
         </div>
         <div class="card-footer">
-            {!! Form::submit(trans('global.app_update'), ['class' => 'btn btn-success']) !!}
+            {!! Form::submit(__('global.update'), ['class' => 'btn btn-success']) !!}
         </div>
     </div>
 
