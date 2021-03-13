@@ -9,6 +9,14 @@
             @each('partials.menu-item', mainMenu(), 'menu')
         </ul>
         <ul class="navbar-nav ml-auto">
+            @guest
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('login')}}">{{__('Login')}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('register')}}">{{__('Register')}}</a>
+                </li>
+            @endguest
             @auth
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -22,7 +30,7 @@
                     <a class="dropdown-item" href="{{ route('permissions.index') }}">Permissions</a>
                     <a class="dropdown-item" href="{{ route('setting.index') }}">Settings</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
