@@ -14,6 +14,15 @@ use Modules\Courses\Entities\Section;
 
 class CoursesController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:course.index', ['only' => ['index']]);
+        $this->middleware('permission:course.create', ['only' => ['create','store']]);
+        $this->middleware('permission:course.edit', ['only' => ['edit','update', 'active']]);
+        $this->middleware('permission:course.show', ['only' => ['show']]);
+        $this->middleware('permission:course.delete', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      * @return Response

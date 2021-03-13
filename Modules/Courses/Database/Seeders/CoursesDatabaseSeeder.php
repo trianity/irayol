@@ -16,6 +16,9 @@ class CoursesDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        $this->call(CourseTableSeeder::class);
+        $this->call([
+            CourseTableSeeder::class,
+            PermissionTableSeeder::class
+        ]);
     }
 }

@@ -11,6 +11,15 @@ use Modules\Courses\Http\Requests\CreateClassRequest;
 
 class ClassesController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:class.index', ['only' => ['index']]);
+        $this->middleware('permission:class.create', ['only' => ['create','store']]);
+        $this->middleware('permission:class.edit', ['only' => ['edit','update', 'active']]);
+        $this->middleware('permission:class.show', ['only' => ['show']]);
+        $this->middleware('permission:class.delete', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      * @return Renderable

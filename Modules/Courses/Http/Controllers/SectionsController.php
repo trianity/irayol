@@ -11,6 +11,15 @@ use Modules\Courses\Http\Requests\CreateSectionRequest;
 
 class SectionsController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:section.index', ['only' => ['index']]);
+        $this->middleware('permission:section.create', ['only' => ['create','store']]);
+        $this->middleware('permission:section.edit', ['only' => ['edit','update', 'active']]);
+        $this->middleware('permission:section.show', ['only' => ['show']]);
+        $this->middleware('permission:section.delete', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      * @return Renderable
