@@ -74,6 +74,11 @@ return [
     'document' => 'Documento',
     'text' => 'Texto ',
 
+    'video_src' => [
+		'youtube' => 'Youtube',
+        'vimeo' => 'Vimeo'
+	],
+
     'choose_file' => 'Elija un archivo',
     'upload' => 'Subir',
 

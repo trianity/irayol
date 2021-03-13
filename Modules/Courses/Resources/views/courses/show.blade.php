@@ -120,7 +120,7 @@
                                     <select class="form-control" id="is_active" name="is_active">
                                         <option selected="" disabled>{{__('courses::global.choose_an_option')}}</option>
                                         @foreach ($data = array( 1 => __('courses::global.yes'), 0 => __('courses::global.no')) as $key => $is_active)
-                                        <option value="{{$key}}">{{$is_active}}</option>
+                                            <option value="{{$key}}">{{$is_active}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -133,8 +133,8 @@
                                     <label for="media_type">{{__('courses::global.media_type')}}</label>
                                     <select class="form-control" id="media_type" name="media_type">
                                         <option selected="" disabled>{{__('courses::global.choose_an_option')}}</option>
-                                        @foreach ($data = array('video' => __('courses::global.video'), 'audio' => __('courses::global.audio'), 'document' => __('courses::global.document'), 'text' => __('courses::global.text')) as $key => $media_type)
-                                        <option value="{{$key}}">{{$media_type}}</option>
+                                        @foreach ($data = array('vimeo' => __('courses::global.video_src.vimeo'), 'youtube' => __('courses::global.video_src.youtube')) as $key => $media_type)
+                                            <option value="{{$key}}">{{$media_type}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -160,7 +160,7 @@
                                     <select class="form-control" id="access" name="access">
                                         <option selected="" disabled>{{__('courses::global.choose_an_option')}}</option>
                                         @foreach ($data = array('pay' => __('courses::global.pay'), 'free' => __('courses::global.free')) as $key => $access)
-                                        <option value="{{$key}}">{{$access}}</option>
+                                            <option value="{{$key}}">{{$access}}</option>
                                         @endforeach
                                     </select>
                                 </div>
